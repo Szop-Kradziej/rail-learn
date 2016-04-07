@@ -3,6 +3,8 @@ package com.drabarz.karola.raillearn;
 import android.view.View;
 import android.widget.TextView;
 
+import com.drabarz.karola.raillearn.model.Trip;
+
 public class TripItem {
 
     private final Trip trip;
@@ -31,16 +33,16 @@ public class TripItem {
 
     private void setTripRoute(View view) {
         TextView tripRouteTextView = (TextView) view.findViewById(R.id.tripRouteTextView);
-        tripRouteTextView.setText(trip.getTripRoute());
+        tripRouteTextView.setText(trip.getRoute().getFromToRoute());
     }
 
     public void setTripDate(View view) {
         TextView tripDateTextView = (TextView) view.findViewById(R.id.tripDateTextView);
-        tripDateTextView.setText(trip.getTripDate());
+        tripDateTextView.setText(trip.getRoute().getDeparture().getDate());
     }
 
     public void setTripTime(View view) {
         TextView tripTimeTextView = (TextView) view.findViewById(R.id.tripTimeTextView);
-        tripTimeTextView.setText(trip.getTripTime());
+        tripTimeTextView.setText(trip.getRoute().getDeparture().getTime());
     }
 }
