@@ -6,12 +6,14 @@ public class Trip {
     private final String tripTitle;
     private final String tripRoute;
     private final String tripDate;
+    private final String tripTime;
 
-    public Trip(String userName, String tripTitle, String tripDescription, String tripDate) {
+    public Trip(String userName, String tripTitle, String tripDescription, String tripDate, String tripTime) {
         this.userName = userName;
         this.tripTitle = tripTitle;
         this.tripRoute = tripDescription;
         this.tripDate = tripDate;
+        this.tripTime = tripTime;
     }
 
     public String getUserName() {
@@ -28,5 +30,9 @@ public class Trip {
 
     public String getTripDate() {
         return tripDate;
+    }
+
+    public String getTripTime() {
+        return tripTime;
     }
 }

@@ -16,6 +16,7 @@ public class TripItem {
         setTripTitle(view);
         setTripRoute(view);
         setTripDate(view);
+        setTripTime(view);
     }
 
     private void setUserName(View view) {
@@ -36,5 +37,10 @@ public class TripItem {
     public void setTripDate(View view) {
         TextView tripDateTextView = (TextView) view.findViewById(R.id.tripDateTextView);
         tripDateTextView.setText(trip.getTripDate());
+    }
+
+    public void setTripTime(View view) {
+        TextView tripTimeTextView = (TextView) view.findViewById(R.id.tripTimeTextView);
+        tripTimeTextView.setText(trip.getTripTime());
     }
 }
