@@ -13,8 +13,15 @@ public class TestData {
         Route route = new Route(departure, "Kraków");
         Trip trip = new Trip("Karola", "Hiszpanski", route);
 
-        for (int i = 0; i < count; i++){
+        for (int i = 0; i < (count/2); i++){
             tripsGroupAdapter.addTripItem(new TripItem(trip));
         }
+
+        Trip trip_second = new Trip("Karol", "Angielski", route);
+
+        for (int i = 0; i < (count/2); i++){
+            tripsGroupAdapter.addTripItem(new TripItem(trip_second));
+        }
+
     }
 }

@@ -1,10 +1,12 @@
 package com.drabarz.karola.raillearn.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
+import com.drabarz.karola.raillearn.FullTripActivity;
 import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.TripItem;
 
@@ -38,13 +40,35 @@ public class TripsGroupAdapter extends BaseAdapter {
         return position;
     }
 
+    public TripItem getSelectedTripItem() {
+        for(TripItem tripItem : tripsGroup) {
+            if(tripItem.isSelected()) {
+                tripItem.setIsSelected(false);
+                return tripItem;
+            }
+        }
+        return null;
+    }
+
     @Override
-    public View getView(int position, View convertView, ViewGroup viewGroup) {
+    public View getView(int position, final View convertView, ViewGroup viewGroup) {
 
         final TripItem tripItem = tripsGroup.get(position);
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.trip_field, viewGroup, false);
         tripItem.bindLayout(view);
 
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onTripItemClicked(tripItem);
+            }
+        });
+
         return view;
+    }
+
+    private void onTripItemClicked(TripItem tripItem) {
+        tripItem.setIsSelected(true);
+        notifyDataSetChanged();
     }
 }

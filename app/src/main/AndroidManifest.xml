@@ -19,6 +19,9 @@
         <activity
             android:name="TripsActivity">
         </activity>
+        <activity
+            android:name="FullTripActivity">
+        </activity>
     </application>
 
 </manifest>
