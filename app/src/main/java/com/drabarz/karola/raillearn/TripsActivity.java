@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import com.drabarz.karola.raillearn.adapter.TripsGroupAdapter;
+import com.drabarz.karola.raillearn.test.TestData;
 
 public class TripsActivity extends AppCompatActivity{
 
@@ -19,6 +20,8 @@ public class TripsActivity extends AppCompatActivity{
     }
 
     private void setAdapter() {
+        TestData.fillTripsListWithTestData(tripsGroupAdapter, 4);
+
         ListView tripsGroupView = (ListView) findViewById(R.id.tripsGroupView);
         tripsGroupView.setAdapter(tripsGroupAdapter);
     }
