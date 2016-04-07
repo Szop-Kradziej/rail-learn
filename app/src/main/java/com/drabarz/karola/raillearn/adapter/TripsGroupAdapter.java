@@ -43,6 +43,7 @@ public class TripsGroupAdapter extends BaseAdapter {
 
         final TripItem tripItem = tripsGroup.get(position);
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.trip_field, viewGroup, false);
+        tripItem.bindLayout(view);
 
         return view;
     }
