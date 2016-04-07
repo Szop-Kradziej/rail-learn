@@ -1,6 +1,8 @@
 package com.drabarz.karola.raillearn.model;
 
-public class Trip {
+import java.io.Serializable;
+
+public class Trip  implements Serializable{
 
     private final String userName;
     private final String tripTitle;

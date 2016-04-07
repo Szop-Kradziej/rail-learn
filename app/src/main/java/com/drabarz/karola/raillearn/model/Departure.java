@@ -1,6 +1,8 @@
 package com.drabarz.karola.raillearn.model;
 
-public class Departure {
+import java.io.Serializable;
+
+public class Departure implements Serializable {
     private final String name;
     private final String date;
     private final String time;

@@ -1,8 +1,9 @@
 package com.drabarz.karola.raillearn.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Route {
+public class Route implements Serializable {
     private final Departure departure;
     private final String arrival;
 

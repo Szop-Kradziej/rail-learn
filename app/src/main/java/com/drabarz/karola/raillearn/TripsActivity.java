@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.ListView;
 
 import com.drabarz.karola.raillearn.adapter.TripsGroupAdapter;
@@ -12,6 +11,8 @@ import com.drabarz.karola.raillearn.model.Trip;
 import com.drabarz.karola.raillearn.test.TestData;
 
 public class TripsActivity extends AppCompatActivity{
+
+    public static final String TRIP = "trip";
 
     private TripsGroupAdapter tripsGroupAdapter = new TripsGroupAdapter();
 
@@ -44,7 +45,8 @@ public class TripsActivity extends AppCompatActivity{
 
     private void startFullTripActivity(Trip trip) {
         Intent intent = new Intent(this, FullTripActivity.class);
-        Log.i("TripsActivity", "Get trip: " + trip.getTripTitle());
+        intent.putExtra(TRIP, trip);
+
         startActivity(intent);
     }
 }
