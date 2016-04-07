@@ -29,8 +29,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
+            android:gravity="center"
             android:layout_weight="1"
-            android:id="@+id/stopsTextField"
+            android:id="@+id/tripStopsTextView"
             android:textColor="@color/dark_grey"/>
 
         <TextView
@@ -46,8 +47,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
+            android:gravity="center"
             android:layout_weight="3"
-            android:id="@+id/descriptionTextField"
+            android:id="@+id/tripDescriptionTextView"
             android:textColor="@color/dark_grey"/>
     </LinearLayout>
 

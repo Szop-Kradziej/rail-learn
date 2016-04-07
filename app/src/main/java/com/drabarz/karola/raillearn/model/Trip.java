@@ -5,12 +5,12 @@ import java.io.Serializable;
 public class Trip  implements Serializable{
 
     private final String userName;
-    private final String tripTitle;
+    private final Offer offer;
     private final Route route;
 
-    public Trip(String userName, String tripTitle, Route route) {
+    public Trip(String userName, Offer offer, Route route) {
         this.userName = userName;
-        this.tripTitle = tripTitle;
+        this.offer = offer;
         this.route = route;
     }
 
@@ -18,8 +18,8 @@ public class Trip  implements Serializable{
         return userName;
     }
 
-    public String getTripTitle() {
-        return tripTitle;
+    public Offer getOffer() {
+        return offer;
     }
 
     public Route getRoute() {

@@ -16,8 +16,14 @@ public class Route implements Serializable {
         return departure;
     }
 
-    public String getFromToRoute() {
+    public String getMainRoute() {
         String fromToRoute = departure.getName() + " - " + arrival;
         return fromToRoute;
+    }
+
+    public String getStops() {
+        String fullRoute = departure.getName() + "(" + departure.getTime() + ")";
+        fullRoute= fullRoute + " - " + arrival;
+        return fullRoute;
     }
 }

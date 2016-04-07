@@ -42,12 +42,12 @@ public class TripItem {
 
     private void setTripTitle(View view) {
         TextView tripTitleTextView = (TextView) view.findViewById(R.id.tripTitleTextView);
-        tripTitleTextView.setText(trip.getTripTitle());
+        tripTitleTextView.setText(trip.getOffer().getTitle());
     }
 
     private void setTripRoute(View view) {
         TextView tripRouteTextView = (TextView) view.findViewById(R.id.tripRouteTextView);
-        tripRouteTextView.setText(trip.getRoute().getFromToRoute());
+        tripRouteTextView.setText(trip.getRoute().getMainRoute());
     }
 
     public void setTripDate(View view) {
