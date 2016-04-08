@@ -1,11 +1,11 @@
-package com.drabarz.karola.raillearn.test;
+package com.drabarz.karola.raillearn.model.test;
 
 import com.drabarz.karola.raillearn.model.Departure;
 import com.drabarz.karola.raillearn.model.Offer;
 import com.drabarz.karola.raillearn.model.Route;
 import com.drabarz.karola.raillearn.model.Trip;
-import com.drabarz.karola.raillearn.TripItem;
-import com.drabarz.karola.raillearn.adapter.TripsGroupAdapter;
+import com.drabarz.karola.raillearn.trip.list.TripItem;
+import com.drabarz.karola.raillearn.trip.list.TripsGroupAdapter;
 
 public class TestData {
 

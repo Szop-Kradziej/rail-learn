@@ -1,18 +1,18 @@
-package com.drabarz.karola.raillearn;
+package com.drabarz.karola.raillearn.trip.list;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
-import com.drabarz.karola.raillearn.adapter.TripsGroupAdapter;
+import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Trip;
-import com.drabarz.karola.raillearn.test.TestData;
+import com.drabarz.karola.raillearn.model.test.TestData;
+import com.drabarz.karola.raillearn.trip.details.FullTripActivity;
 
-public class TripsActivity extends AppCompatActivity{
-
-    public static final String TRIP = "trip";
+public class TripsActivity extends AppCompatActivity {
 
     private TripsGroupAdapter tripsGroupAdapter = new TripsGroupAdapter();
 
@@ -44,9 +44,11 @@ public class TripsActivity extends AppCompatActivity{
     }
 
     private void startFullTripActivity(Trip trip) {
-        Intent intent = new Intent(this, FullTripActivity.class);
-        intent.putExtra(TRIP, trip);
+        FullTripActivity.start(this, trip);
+    }
 
-        startActivity(intent);
+    public static void start(Context context) {
+        Intent intent = new Intent(context, TripsActivity.class);
+        context.startActivity(intent);
     }
 }

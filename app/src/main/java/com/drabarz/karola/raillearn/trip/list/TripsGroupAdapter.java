@@ -1,14 +1,12 @@
-package com.drabarz.karola.raillearn.adapter;
+package com.drabarz.karola.raillearn.trip.list;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
-import com.drabarz.karola.raillearn.FullTripActivity;
 import com.drabarz.karola.raillearn.R;
-import com.drabarz.karola.raillearn.TripItem;
+import com.drabarz.karola.raillearn.trip.list.TripItem;
 
 import java.util.ArrayList;
 import java.util.List;

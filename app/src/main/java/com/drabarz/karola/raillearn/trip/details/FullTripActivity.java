@@ -1,12 +1,17 @@
-package com.drabarz.karola.raillearn;
+package com.drabarz.karola.raillearn.trip.details;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Trip;
 
 public class FullTripActivity extends AppCompatActivity {
+
+    public static final String TRIP = "trip";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +22,7 @@ public class FullTripActivity extends AppCompatActivity {
     }
 
     private void bindLayout() {
-        Trip trip = (Trip) getIntent().getSerializableExtra(TripsActivity.TRIP);
+        Trip trip = (Trip) getIntent().getSerializableExtra(TRIP);
         setTripTitle(trip.getOffer().getTitle());
         setMainTripRoute(trip.getRoute().getMainRoute());
         setTripDate(trip.getRoute().getDeparture().getDate());
@@ -60,5 +65,11 @@ public class FullTripActivity extends AppCompatActivity {
     public void setTripDescription(String tripDescription) {
         TextView tripDescriptionTextView = (TextView) findViewById(R.id.tripDescriptionTextView);
         tripDescriptionTextView.setText(tripDescription);
+    }
+
+    public static void start(Context context, Trip trip) {
+        Intent intent = new Intent(context, FullTripActivity.class);
+        intent.putExtra(TRIP, trip);
+        context.startActivity(intent);
     }
 }
