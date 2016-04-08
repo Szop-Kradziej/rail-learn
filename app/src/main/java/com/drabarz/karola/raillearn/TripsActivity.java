@@ -12,8 +12,6 @@ import com.drabarz.karola.raillearn.test.TestData;
 
 public class TripsActivity extends AppCompatActivity{
 
-    public static final String TRIP = "trip";
-
     private TripsGroupAdapter tripsGroupAdapter = new TripsGroupAdapter();
 
     @Override
@@ -44,9 +42,6 @@ public class TripsActivity extends AppCompatActivity{
     }
 
     private void startFullTripActivity(Trip trip) {
-        Intent intent = new Intent(this, FullTripActivity.class);
-        intent.putExtra(TRIP, trip);
-
-        startActivity(intent);
+        FullTripActivity.start(this, trip);
     }
 }
