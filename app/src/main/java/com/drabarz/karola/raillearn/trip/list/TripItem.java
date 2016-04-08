@@ -38,7 +38,7 @@ public class TripItem {
 
     private void setUserName(View view) {
         TextView userNameTextView = (TextView) view.findViewById(R.id.userNameTextView);
-        userNameTextView.setText(trip.getUserName());
+        userNameTextView.setText(trip.getUser().getName());
     }
 
     private void setTripTitle(View view) {

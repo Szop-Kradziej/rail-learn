@@ -4,18 +4,18 @@ import java.io.Serializable;
 
 public class Trip  implements Serializable{
 
-    private final String userName;
+    private final User user;
     private final Offer offer;
     private final Route route;
 
-    public Trip(String userName, Offer offer, Route route) {
-        this.userName = userName;
+    public Trip(User user, Offer offer, Route route) {
+        this.user = user;
         this.offer = offer;
         this.route = route;
     }
 
-    public String getUserName() {
-        return userName;
+    public User getUser() {
+        return user;
     }
 
     public Offer getOffer() {

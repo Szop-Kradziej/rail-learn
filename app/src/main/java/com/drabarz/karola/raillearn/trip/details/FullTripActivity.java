@@ -27,7 +27,7 @@ public class FullTripActivity extends AppCompatActivity {
         setMainTripRoute(trip.getRoute().getMainRoute());
         setTripDate(trip.getRoute().getDeparture().getDate());
         setTripTime(trip.getRoute().getDeparture().getTime());
-        setUserName(trip.getUserName());
+        setUserName(trip.getUser().getName());
         setTripStops(trip.getRoute().getStops());
         setTripDescription(trip.getOffer().getDescription());
     }
