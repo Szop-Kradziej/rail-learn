@@ -1,4 +1,4 @@
-package com.drabarz.karola.raillearn;
+package com.drabarz.karola.raillearn.trip.list;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,9 +7,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
-import com.drabarz.karola.raillearn.adapter.TripsGroupAdapter;
+import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Trip;
-import com.drabarz.karola.raillearn.test.TestData;
+import com.drabarz.karola.raillearn.model.test.TestData;
+import com.drabarz.karola.raillearn.trip.details.FullTripActivity;
 
 public class TripsActivity extends AppCompatActivity {
 

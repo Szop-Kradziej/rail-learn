@@ -1,8 +1,9 @@
-package com.drabarz.karola.raillearn;
+package com.drabarz.karola.raillearn.trip.list;
 
 import android.view.View;
 import android.widget.TextView;
 
+import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Trip;
 
 public class TripItem {

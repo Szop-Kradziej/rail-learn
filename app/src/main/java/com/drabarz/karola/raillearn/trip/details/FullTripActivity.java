@@ -1,4 +1,4 @@
-package com.drabarz.karola.raillearn;
+package com.drabarz.karola.raillearn.trip.details;
 
 import android.content.Context;
 import android.content.Intent;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Trip;
 
 public class FullTripActivity extends AppCompatActivity {
