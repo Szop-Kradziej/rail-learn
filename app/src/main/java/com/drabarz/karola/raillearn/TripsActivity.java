@@ -1,5 +1,6 @@
 package com.drabarz.karola.raillearn;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
@@ -10,7 +11,7 @@ import com.drabarz.karola.raillearn.adapter.TripsGroupAdapter;
 import com.drabarz.karola.raillearn.model.Trip;
 import com.drabarz.karola.raillearn.test.TestData;
 
-public class TripsActivity extends AppCompatActivity{
+public class TripsActivity extends AppCompatActivity {
 
     private TripsGroupAdapter tripsGroupAdapter = new TripsGroupAdapter();
 
@@ -43,5 +44,10 @@ public class TripsActivity extends AppCompatActivity{
 
     private void startFullTripActivity(Trip trip) {
         FullTripActivity.start(this, trip);
+    }
+
+    public static void start(Context context) {
+        Intent intent = new Intent(context, TripsActivity.class);
+        context.startActivity(intent);
     }
 }

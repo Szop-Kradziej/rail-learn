@@ -28,7 +28,6 @@ public class LoginActivity extends ActionBarActivity {
     }
 
     private void onTripsButtonClick() {
-        Intent intent = new Intent(this, TripsActivity.class);
-        startActivity(intent);
+        TripsActivity.start(this);
     }
 }
