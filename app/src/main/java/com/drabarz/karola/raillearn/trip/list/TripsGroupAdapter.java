@@ -38,14 +38,14 @@ public class TripsGroupAdapter extends BaseAdapter {
         return position;
     }
 
-    public TripItem getSelectedTripItem() throws RuntimeException {
+    public TripItem getSelectedTripItem() {
         for(TripItem tripItem : tripsGroup) {
             if(tripItem.isSelected()) {
                 tripItem.setIsSelected(false);
                 return tripItem;
             }
         }
-        throw new RuntimeException();
+        throw new RuntimeException("No tripItem selected");
     }
 
     @Override
