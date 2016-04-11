@@ -17,8 +17,8 @@ import com.drabarz.karola.raillearn.trip.details.FullTripActivity;
 
 import java.util.List;
 
-import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 public class TripsActivity extends AppCompatActivity {
@@ -55,25 +55,21 @@ public class TripsActivity extends AppCompatActivity {
 
     private void setService() {
         RailLearnService service = ServiceFactory.createRetrofitService(RailLearnService.class, RailLearnService.SERVICE_ENDPOINT);
+
         service.getTrip()
-                .subscribeOn(Schedulers.newThread())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<List<Trip>>() {
+                .subscribe(new Action1<List<Trip>>() {
                     @Override
-                    public void onCompleted() {
-                        Log.i("TripsActivity", "Service subscribe completed");
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.e("TripsActivity", "Service subscribe error");
-                    }
-
-                    @Override
-                    public void onNext(List<Trip> trips) {
+                    public void call(List<Trip> trips) {
                         for (Trip trip : trips) {
                             tripsGroupAdapter.addTripItem(new TripItem(trip));
                         }
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Log.e("TripsActivity", "Service subscribe error");
                     }
                 });
     }
