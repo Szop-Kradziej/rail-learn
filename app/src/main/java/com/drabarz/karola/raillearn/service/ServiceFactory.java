@@ -7,13 +7,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class ServiceFactory {
 
     public static <T> T createRetrofitService(final Class<T> clazz, final String endPoint) {
-        final Retrofit retrofit = new Retrofit.Builder()
+        return createRetrofit(endPoint).create(clazz);
+    }
+
+    private static Retrofit createRetrofit(String endPoint) {
+        return new Retrofit.Builder()
                 .baseUrl(endPoint)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
-        T service = retrofit.create(clazz);
-
-        return service;
     }
 }
