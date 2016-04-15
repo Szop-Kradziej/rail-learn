@@ -54,7 +54,7 @@ public class TripsActivity extends AppCompatActivity {
     }
 
     private void setService() {
-        RailLearnService service = ServiceFactory.createRetrofitService(RailLearnService.class, RailLearnService.SERVICE_ENDPOINT);
+        RailLearnService service = ServiceFactory.createRetrofitService(RailLearnService.class, getString(R.string.service_endpoint));
 
         service.getTrip()
                 .subscribeOn(Schedulers.io())

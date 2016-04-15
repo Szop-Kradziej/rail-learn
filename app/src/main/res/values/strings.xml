@@ -8,4 +8,5 @@
 
     <string name="stops">Stops:</string>
     <string name="Description">Description:</string>
+    <string name="service_endpoint">https://rail-learn.herokuapp.com</string>
 </resources>
