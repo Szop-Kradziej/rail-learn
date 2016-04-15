@@ -10,7 +10,6 @@ import android.widget.ListView;
 
 import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Trip;
-import com.drabarz.karola.raillearn.model.test.TestData;
 import com.drabarz.karola.raillearn.service.RailLearnService;
 import com.drabarz.karola.raillearn.service.ServiceFactory;
 import com.drabarz.karola.raillearn.trip.details.FullTripActivity;
@@ -35,8 +34,6 @@ public class TripsActivity extends AppCompatActivity {
     }
 
     private void setAdapter() {
-        TestData.fillTripsListWithTestData(tripsGroupAdapter, 4);
-
         tripsGroupAdapter.registerDataSetObserver(new DataSetObserver() {
             @Override
             public void onChanged() {
