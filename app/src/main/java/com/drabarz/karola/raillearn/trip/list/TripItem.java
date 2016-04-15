@@ -9,11 +9,9 @@ import com.drabarz.karola.raillearn.model.Trip;
 public class TripItem {
 
     private final Trip trip;
-    private boolean isSelected;
 
     public TripItem(Trip trip) {
         this.trip = trip;
-        isSelected = false;
     }
 
     public void bindLayout(View view) {
@@ -26,14 +24,6 @@ public class TripItem {
 
     public Trip getTrip() {
         return trip;
-    }
-
-    public boolean isSelected() {
-        return isSelected;
-    }
-
-    public void setIsSelected(boolean isSelected) {
-        this.isSelected = isSelected;
     }
 
     private void setUserName(View view) {

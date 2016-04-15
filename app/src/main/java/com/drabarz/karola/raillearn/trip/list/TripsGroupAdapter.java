@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.drabarz.karola.raillearn.R;
+import com.drabarz.karola.raillearn.model.Trip;
 import com.drabarz.karola.raillearn.trip.list.TripItem;
 
 import java.util.ArrayList;
@@ -14,8 +15,10 @@ import java.util.List;
 public class TripsGroupAdapter extends BaseAdapter {
 
     private final List<TripItem> tripsGroup = new ArrayList<TripItem>();
+    private TripsActivity tripsActivity;
 
-    public TripsGroupAdapter() {
+    public TripsGroupAdapter(TripsActivity tripsActivity) {
+        this.tripsActivity = tripsActivity;
     }
 
     public void addTripItem(TripItem tripItem) {
@@ -38,16 +41,6 @@ public class TripsGroupAdapter extends BaseAdapter {
         return position;
     }
 
-    public TripItem getSelectedTripItem() {
-        for(TripItem tripItem : tripsGroup) {
-            if(tripItem.isSelected()) {
-                tripItem.setIsSelected(false);
-                return tripItem;
-            }
-        }
-        throw new RuntimeException("No tripItem selected");
-    }
-
     @Override
     public View getView(int position, final View convertView, ViewGroup viewGroup) {
 
@@ -58,15 +51,10 @@ public class TripsGroupAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onTripItemClicked(tripItem);
+                tripsActivity.startFullTripActivity(tripItem.getTrip());
             }
         });
 
         return view;
-    }
-
-    private void onTripItemClicked(TripItem tripItem) {
-        tripItem.setIsSelected(true);
-        notifyDataSetChanged();
     }
 }

@@ -22,7 +22,7 @@ import rx.schedulers.Schedulers;
 
 public class TripsActivity extends AppCompatActivity {
 
-    private TripsGroupAdapter tripsGroupAdapter = new TripsGroupAdapter();
+    private TripsGroupAdapter tripsGroupAdapter = new TripsGroupAdapter(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,20 +34,8 @@ public class TripsActivity extends AppCompatActivity {
     }
 
     private void setAdapter() {
-        tripsGroupAdapter.registerDataSetObserver(new DataSetObserver() {
-            @Override
-            public void onChanged() {
-                onDataSetChange();
-            }
-        });
-
         ListView tripsGroupView = (ListView) findViewById(R.id.tripsGroupView);
         tripsGroupView.setAdapter(tripsGroupAdapter);
-    }
-
-    private void onDataSetChange() {
-        Trip selectedTrip = tripsGroupAdapter.getSelectedTripItem().getTrip();
-        startFullTripActivity(selectedTrip);
     }
 
     private void setService() {
@@ -71,7 +59,7 @@ public class TripsActivity extends AppCompatActivity {
                 });
     }
 
-    private void startFullTripActivity(Trip trip) {
+    public void startFullTripActivity(Trip trip) {
         FullTripActivity.start(this, trip);
     }
 
