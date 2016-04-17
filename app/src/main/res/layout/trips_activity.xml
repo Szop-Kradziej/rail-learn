@@ -7,4 +7,12 @@
     <include
         layout="@layout/trips_group"/>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_plus_white"/>
+
 </LinearLayout>
