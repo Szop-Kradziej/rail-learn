@@ -4,14 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListView;
 
 import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Trip;
 import com.drabarz.karola.raillearn.service.RailLearnService;
 import com.drabarz.karola.raillearn.service.ServiceFactory;
+import com.drabarz.karola.raillearn.trip.create.NewTripActivity;
 import com.drabarz.karola.raillearn.trip.details.FullTripActivity;
 
 import java.util.List;
@@ -31,6 +34,7 @@ public class TripsActivity extends AppCompatActivity {
 
         setAdapter();
         setService();
+        setNewTripButtonListener();
     }
 
     private void setAdapter() {
@@ -66,5 +70,20 @@ public class TripsActivity extends AppCompatActivity {
     public static void start(Context context) {
         Intent intent = new Intent(context, TripsActivity.class);
         context.startActivity(intent);
+    }
+
+    private void setNewTripButtonListener() {
+
+        FloatingActionButton newTripButton = (FloatingActionButton) findViewById(R.id.newTripButton);
+        newTripButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startNewTripActivity();
+            }
+        });
+    }
+
+    private void startNewTripActivity() {
+        NewTripActivity.start(this);
     }
 }
