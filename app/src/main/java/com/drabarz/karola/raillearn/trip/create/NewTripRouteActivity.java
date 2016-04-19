@@ -17,6 +17,7 @@ public class NewTripRouteActivity extends AppCompatActivity{
         setContentView(R.layout.new_trip_route_activity);
 
         addDateTextListener();
+        addTimeTextListener();
     }
 
     private void addDateTextListener() {
@@ -32,6 +33,21 @@ public class NewTripRouteActivity extends AppCompatActivity{
     public void showDatePickerDialog(View v) {
         DatePicker datePicker = new DatePicker();
         datePicker.show(getSupportFragmentManager(), "datePicker");
+    }
+
+    private void addTimeTextListener() {
+        EditText inputStationTimeEditText = (EditText) findViewById(R.id.inputStationTimeEditText);
+        inputStationTimeEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showTimePickerDialog(v);
+            }
+        });
+    }
+
+    private void showTimePickerDialog(View v) {
+        TimePicker timePicker = new TimePicker();
+        timePicker.show(getSupportFragmentManager(), "timePicker");
     }
 
     public static void start(Context context) {
