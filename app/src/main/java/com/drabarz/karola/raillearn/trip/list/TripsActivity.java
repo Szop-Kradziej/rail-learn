@@ -2,7 +2,6 @@ package com.drabarz.karola.raillearn.trip.list;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +13,7 @@ import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Trip;
 import com.drabarz.karola.raillearn.service.RailLearnService;
 import com.drabarz.karola.raillearn.service.ServiceFactory;
-import com.drabarz.karola.raillearn.trip.create.NewTripActivity;
+import com.drabarz.karola.raillearn.trip.create.NewTripRouteActivity;
 import com.drabarz.karola.raillearn.trip.details.FullTripActivity;
 
 import java.util.List;
@@ -84,6 +83,6 @@ public class TripsActivity extends AppCompatActivity {
     }
 
     private void startNewTripActivity() {
-        NewTripActivity.start(this);
+        NewTripRouteActivity.start(this);
     }
 }

@@ -26,7 +26,7 @@ public class TripsActivityTest {
     @Test
     public void shouldStartNewTripActivity() {
         Espresso.onView(ViewMatchers.withId(R.id.newTripButton)).perform(ViewActions.click());
-        Espresso.onView(ViewMatchers.withId(R.id.newTripLayout)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
+        Espresso.onView(ViewMatchers.withId(R.id.newTripRouteLayout)).check(ViewAssertions.matches(ViewMatchers.isDisplayed()));
     }
 
 }

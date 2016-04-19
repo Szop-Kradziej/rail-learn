@@ -9,4 +9,8 @@
     <string name="stops">Stops:</string>
     <string name="Description">Description:</string>
     <string name="service_endpoint">https://rail-learn.herokuapp.com</string>
+
+    <string name="hint_station">Station name</string>
+    <string name="hint_date">Date</string>
+    <string name="hint_time">Time</string>
 </resources>
