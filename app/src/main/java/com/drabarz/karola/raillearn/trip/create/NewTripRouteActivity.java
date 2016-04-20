@@ -25,12 +25,12 @@ public class NewTripRouteActivity extends AppCompatActivity{
         inputStationDateEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showDatePickerDialog(v);
+                showDatePickerDialog();
             }
         });
     }
 
-    public void showDatePickerDialog(View v) {
+    public void showDatePickerDialog() {
         DatePicker datePicker = new DatePicker();
         datePicker.show(getSupportFragmentManager(), "datePicker");
     }
@@ -40,12 +40,12 @@ public class NewTripRouteActivity extends AppCompatActivity{
         inputStationTimeEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showTimePickerDialog(v);
+                showTimePickerDialog();
             }
         });
     }
 
-    private void showTimePickerDialog(View v) {
+    private void showTimePickerDialog() {
         TimePicker timePicker = new TimePicker();
         timePicker.show(getSupportFragmentManager(), "timePicker");
     }
