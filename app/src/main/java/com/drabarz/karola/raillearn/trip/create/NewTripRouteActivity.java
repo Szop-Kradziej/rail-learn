@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.drabarz.karola.raillearn.R;
+import com.drabarz.karola.raillearn.model.Route;
 
 public class NewTripRouteActivity extends AppCompatActivity{
 
@@ -57,13 +58,18 @@ public class NewTripRouteActivity extends AppCompatActivity{
         confirmRouteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startNewTripDescriptionActivity();
+                onConfirmRouteButtonClicked();
             }
         });
     }
 
-    private void startNewTripDescriptionActivity() {
-        NewTripDescriptionActivity.start(this);
+    private void onConfirmRouteButtonClicked() {
+        Route route = TestData.getExampleRoute();
+        startNewTripOfferActivity(route);;
+    }
+
+    private void startNewTripOfferActivity(Route route) {
+        NewTripOfferActivity.start(this, route);
     }
 
     public static void start(Context context) {
