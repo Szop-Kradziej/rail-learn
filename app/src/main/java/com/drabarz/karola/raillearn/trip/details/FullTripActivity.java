@@ -4,14 +4,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Trip;
 
-public class FullTripActivity extends AppCompatActivity {
+public abstract class FullTripActivity extends AppCompatActivity {
 
     public static final String TRIP = "trip";
+
+    protected abstract void onConfirmButtonClicked();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +23,17 @@ public class FullTripActivity extends AppCompatActivity {
         setContentView(R.layout.full_trip_activity);
 
         bindLayout();
+        addConfirmButtonListener();
+    }
+
+    private void addConfirmButtonListener() {
+        Button confirmButton = (Button) findViewById(R.id.confirmButton);
+        confirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onConfirmButtonClicked();
+            }
+        });
     }
 
     private void bindLayout() {
@@ -65,11 +80,5 @@ public class FullTripActivity extends AppCompatActivity {
     public void setTripDescription(String tripDescription) {
         TextView tripDescriptionTextView = (TextView) findViewById(R.id.tripDescriptionTextView);
         tripDescriptionTextView.setText(tripDescription);
-    }
-
-    public static void start(Context context, Trip trip) {
-        Intent intent = new Intent(context, FullTripActivity.class);
-        intent.putExtra(TRIP, trip);
-        context.startActivity(intent);
     }
 }

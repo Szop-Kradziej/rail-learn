@@ -14,7 +14,7 @@ import com.drabarz.karola.raillearn.model.Trip;
 import com.drabarz.karola.raillearn.service.RailLearnService;
 import com.drabarz.karola.raillearn.service.ServiceFactory;
 import com.drabarz.karola.raillearn.trip.create.NewTripRouteActivity;
-import com.drabarz.karola.raillearn.trip.details.FullTripActivity;
+import com.drabarz.karola.raillearn.trip.details.SelectedFullTripActivity;
 
 import java.util.List;
 
@@ -62,8 +62,8 @@ public class TripsActivity extends AppCompatActivity {
                 });
     }
 
-    public void startFullTripActivity(Trip trip) {
-        FullTripActivity.start(this, trip);
+    public void startSelectedFullTripActivity(Trip trip) {
+        SelectedFullTripActivity.start(this, trip);
     }
 
     public static void start(Context context) {

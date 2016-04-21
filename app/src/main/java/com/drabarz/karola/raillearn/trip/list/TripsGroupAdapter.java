@@ -6,8 +6,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.drabarz.karola.raillearn.R;
-import com.drabarz.karola.raillearn.model.Trip;
-import com.drabarz.karola.raillearn.trip.list.TripItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +49,7 @@ public class TripsGroupAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tripsActivity.startFullTripActivity(tripItem.getTrip());
+                tripsActivity.startSelectedFullTripActivity(tripItem.getTrip());
             }
         });
 

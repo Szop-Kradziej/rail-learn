@@ -12,7 +12,7 @@ import com.drabarz.karola.raillearn.model.Offer;
 import com.drabarz.karola.raillearn.model.Route;
 import com.drabarz.karola.raillearn.model.Trip;
 import com.drabarz.karola.raillearn.model.User;
-import com.drabarz.karola.raillearn.trip.details.FullTripActivity;
+import com.drabarz.karola.raillearn.trip.details.NewFullTripActivity;
 
 public class NewTripOfferActivity extends AppCompatActivity {
 
@@ -41,7 +41,7 @@ public class NewTripOfferActivity extends AppCompatActivity {
 
     private void onConfirmOfferButtonClicked() {
         Trip trip = createTripFromInputData();
-        startFullTripActivity(trip);
+        startNewFullTripActivity(trip);
     }
 
     private Trip createTripFromInputData() {
@@ -50,8 +50,8 @@ public class NewTripOfferActivity extends AppCompatActivity {
         return new Trip(user, offer, route);
     }
 
-    private void startFullTripActivity(Trip trip) {
-        FullTripActivity.start(this, trip);
+    private void startNewFullTripActivity(Trip trip) {
+        NewFullTripActivity.start(this, trip);
     }
 
     public static void start(Context context, Route route) {
