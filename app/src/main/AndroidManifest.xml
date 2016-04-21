@@ -21,6 +21,7 @@
         <activity android:name=".trip.list.TripsActivity"></activity>
         <activity android:name=".trip.details.FullTripActivity"></activity>
         <activity android:name=".trip.create.NewTripRouteActivity"></activity>
+        <activity android:name=".trip.create.NewTripDescriptionActivity"></activity>
     </application>
 
 </manifest>

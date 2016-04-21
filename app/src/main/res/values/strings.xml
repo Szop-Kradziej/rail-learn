@@ -14,5 +14,7 @@
     <string name="hint_station">Station name</string>
     <string name="hint_date">Date</string>
     <string name="hint_time">Time</string>
+    <string name="hint_description">Description</string>
+    <string name="hint_title">Title</string>
 
 </resources>

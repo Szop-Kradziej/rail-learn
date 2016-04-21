@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import com.drabarz.karola.raillearn.R;
@@ -18,6 +19,7 @@ public class NewTripRouteActivity extends AppCompatActivity{
 
         addDateTextListener();
         addTimeTextListener();
+        addConfirmRouteButtonListener();
     }
 
     private void addDateTextListener() {
@@ -48,6 +50,20 @@ public class NewTripRouteActivity extends AppCompatActivity{
     private void showTimePickerDialog() {
         TimePicker timePicker = new TimePicker();
         timePicker.show(getSupportFragmentManager(), "timePicker");
+    }
+
+    private void addConfirmRouteButtonListener() {
+        Button confirmRouteButton = (Button) findViewById(R.id.confirmRouteButton);
+        confirmRouteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startNewTripDescriptionActivity();
+            }
+        });
+    }
+
+    private void startNewTripDescriptionActivity() {
+        NewTripDescriptionActivity.start(this);
     }
 
     public static void start(Context context) {
