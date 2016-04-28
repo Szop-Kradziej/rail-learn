@@ -1,7 +1,5 @@
 package com.drabarz.karola.raillearn.trip.details;
 
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,7 +11,8 @@ import com.drabarz.karola.raillearn.model.Trip;
 
 public abstract class FullTripActivity extends AppCompatActivity {
 
-    public static final String TRIP = "trip";
+    protected static final String TRIP = "trip";
+    protected Trip trip;
 
     protected abstract void onConfirmButtonClicked();
 
@@ -37,7 +36,7 @@ public abstract class FullTripActivity extends AppCompatActivity {
     }
 
     private void bindLayout() {
-        Trip trip = (Trip) getIntent().getSerializableExtra(TRIP);
+        trip = (Trip) getIntent().getSerializableExtra(TRIP);
         setTripTitle(trip.getOffer().getTitle());
         setMainTripRoute(trip.getRoute().getMainRoute());
         setTripDate(trip.getRoute().getDeparture().getDate());

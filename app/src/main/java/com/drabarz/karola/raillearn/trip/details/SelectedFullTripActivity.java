@@ -3,10 +3,12 @@ package com.drabarz.karola.raillearn.trip.details;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Button;
 
 import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Trip;
+import com.drabarz.karola.raillearn.service.protocol.JoinTripRequest;
 
 public class SelectedFullTripActivity extends FullTripActivity {
 
@@ -19,7 +21,9 @@ public class SelectedFullTripActivity extends FullTripActivity {
 
     @Override
     protected void onConfirmButtonClicked() {
-        //TODO: //TODO: Create join trip json and send request to server
+        //TODO: Send request to server
+        String json = new JoinTripRequest().getJson();
+        Log.i("SelectedFullTrip", json);
     }
 
     public static void start(Context context, Trip trip) {
