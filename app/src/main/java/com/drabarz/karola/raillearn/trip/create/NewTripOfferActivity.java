@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Offer;
@@ -45,9 +46,17 @@ public class NewTripOfferActivity extends AppCompatActivity {
     }
 
     private Trip createTripFromInputData() {
-        Offer offer = TestData.getExampleOffer();
+        Offer offer = getOfferInputData();
         User user = TestData.getExampleUser();
+
         return new Trip(user, offer, route);
+    }
+
+    private Offer getOfferInputData() {
+        String title = ((EditText) findViewById(R.id.inputTripTitleEditText)).getText().toString();
+        String description = ((EditText) findViewById(R.id.inputTripDescriptionEditText)).getText().toString();
+
+        return new Offer(title, description);
     }
 
     private void startNewFullTripActivity(Trip trip) {

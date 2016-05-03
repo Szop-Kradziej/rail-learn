@@ -9,10 +9,6 @@ public class TestData {
         return "Kraków";
     }
 
-    public static Offer getExampleOffer() {
-        return new Offer("Hiszpanski","To jest opis");
-    }
-
     public static User getExampleUser() {
         return new User("Karola");
     }
