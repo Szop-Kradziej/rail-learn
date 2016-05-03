@@ -42,7 +42,6 @@ public abstract class FullTripActivity extends AppCompatActivity {
         setTripDate(trip.getRoute().getDeparture().getDate());
         setTripTime(trip.getRoute().getDeparture().getTime());
         setUserName(trip.getUser().getName());
-        setTripStops(trip.getRoute().getStops());
         setTripDescription(trip.getOffer().getDescription());
     }
 
@@ -69,11 +68,6 @@ public abstract class FullTripActivity extends AppCompatActivity {
     private void setUserName(String userName) {
         TextView userNameTextView = (TextView) findViewById(R.id.userNameTextView);
         userNameTextView.setText(userName);
-    }
-
-    private void setTripStops(String tripStops) {
-        TextView tripStopsTextView = (TextView) findViewById(R.id.tripStopsTextView);
-        tripStopsTextView.setText(tripStops);
     }
 
     public void setTripDescription(String tripDescription) {
