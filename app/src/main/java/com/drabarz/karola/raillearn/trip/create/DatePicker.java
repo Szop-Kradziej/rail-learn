@@ -24,7 +24,7 @@ public class DatePicker extends DialogFragment implements DatePickerDialog.OnDat
 
     @Override
     public void onDateSet(android.widget.DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        EditText inputStationDateEditView = (EditText) getActivity().findViewById(R.id.inputStationDateEditText);
+        EditText inputStationDateEditView = (EditText) getActivity().findViewById(R.id.inputDepartureStationDateEditText);
         inputStationDateEditView.setText(view.getDayOfMonth() + "." + view.getMonth() + "." + view.getYear());
     }
 }

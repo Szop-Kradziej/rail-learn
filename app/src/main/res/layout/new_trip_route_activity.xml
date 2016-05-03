@@ -5,20 +5,28 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
-        android:fillViewport="true">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <include layout="@layout/departure_input_field" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/inputLayoutArrivalStationName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
-            <include layout="@layout/stop_input_field" />
-        </LinearLayout>
-    </ScrollView>
+            <EditText
+                android:id="@+id/inputArrivalStationNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_arrival_station"
+                android:singleLine="true" />
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/confirmRouteButton"

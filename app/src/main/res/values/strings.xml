@@ -11,9 +11,10 @@
     <string name="stops">Stops:</string>
     <string name="Description">Description:</string>
 
-    <string name="hint_station">Station name</string>
+    <string name="hint_departure_station">Departure station name</string>
     <string name="hint_date">Date</string>
     <string name="hint_time">Time</string>
+    <string name="hint_arrival_station">Arrival station name</string>
     <string name="hint_description">Description</string>
     <string name="hint_title">Title</string>
 

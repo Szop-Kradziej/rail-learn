@@ -25,7 +25,7 @@ public class NewTripRouteActivity extends AppCompatActivity{
     }
 
     private void addDateTextListener() {
-        EditText inputStationDateEditText = (EditText) findViewById(R.id.inputStationDateEditText);
+        EditText inputStationDateEditText = (EditText) findViewById(R.id.inputDepartureStationDateEditText);
         inputStationDateEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -40,7 +40,7 @@ public class NewTripRouteActivity extends AppCompatActivity{
     }
 
     private void addTimeTextListener() {
-        EditText inputStationTimeEditText = (EditText) findViewById(R.id.inputStationTimeEditText);
+        EditText inputStationTimeEditText = (EditText) findViewById(R.id.inputDepartureStationTimeEditText);
         inputStationTimeEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,16 +71,22 @@ public class NewTripRouteActivity extends AppCompatActivity{
 
     private Route getRouteInputData() {
         Departure departure = getDepartureInputData();
-        String arrival = TestData.getArrival();
+        String arrival = getArrivalInputData();
         return new Route(departure, arrival);
     }
 
     public Departure getDepartureInputData() {
-        String name = ((EditText) findViewById(R.id.inputStationNameEditText)).getText().toString();
-        String date = ((EditText) findViewById(R.id.inputStationDateEditText)).getText().toString();
-        String time = ((EditText) findViewById(R.id.inputStationTimeEditText)).getText().toString();
+        String name = ((EditText) findViewById(R.id.inputDepartureStationNameEditText)).getText().toString();
+        String date = ((EditText) findViewById(R.id.inputDepartureStationDateEditText)).getText().toString();
+        String time = ((EditText) findViewById(R.id.inputDepartureStationTimeEditText)).getText().toString();
 
         return new Departure(name, date, time);
+    }
+
+    private String getArrivalInputData() {
+        String arrival = ((EditText) findViewById(R.id.inputArrivalStationNameEditText)).getText().toString();
+
+        return arrival;
     }
 
     private void startNewTripOfferActivity(Route route) {

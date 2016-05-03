@@ -24,7 +24,7 @@ public class TimePicker extends DialogFragment implements TimePickerDialog.OnTim
 
     @Override
     public void onTimeSet(android.widget.TimePicker view, int hourOfDay, int minute) {
-        EditText inputStationTimeEditText = (EditText) getActivity().findViewById(R.id.inputStationTimeEditText);
+        EditText inputStationTimeEditText = (EditText) getActivity().findViewById(R.id.inputDepartureStationTimeEditText);
         inputStationTimeEditText.setText(hourOfDay + ":" + minute);
     }
 }
