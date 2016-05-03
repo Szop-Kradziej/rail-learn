@@ -8,7 +8,13 @@ import android.widget.Button;
 
 import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Trip;
-import com.drabarz.karola.raillearn.service.protocol.NewTripRequest;
+import com.drabarz.karola.raillearn.service.RailLearnCreateTripApi;
+import com.drabarz.karola.raillearn.service.ServiceFactory;
+import com.drabarz.karola.raillearn.trip.list.TripsActivity;
+
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 public class NewFullTripActivity extends FullTripActivity {
 
@@ -21,9 +27,21 @@ public class NewFullTripActivity extends FullTripActivity {
 
     @Override
     protected void onConfirmButtonClicked() {
-        //TODO: Send request to server
-        String json = new NewTripRequest(trip).getJson();
-        Log.i("NewFullTripActivity", json);
+        RailLearnCreateTripApi retrofitService = ServiceFactory.createRetrofitService(RailLearnCreateTripApi.class, getString(R.string.service_endpoint));
+        retrofitService.postTrip(trip)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<Void>() {
+                    @Override
+                    public void call(Void aVoid) {
+                        TripsActivity.restart(NewFullTripActivity.this);
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Log.e("NewFullTripActivity", "Service subscribe error");
+                    }
+                });
     }
 
     public static void start(Context context, Trip trip) {

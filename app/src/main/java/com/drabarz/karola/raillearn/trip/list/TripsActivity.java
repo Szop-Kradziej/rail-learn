@@ -66,11 +66,6 @@ public class TripsActivity extends AppCompatActivity {
         SelectedFullTripActivity.start(this, trip);
     }
 
-    public static void start(Context context) {
-        Intent intent = new Intent(context, TripsActivity.class);
-        context.startActivity(intent);
-    }
-
     private void setNewTripButtonListener() {
 
         FloatingActionButton newTripButton = (FloatingActionButton) findViewById(R.id.newTripButton);
@@ -84,5 +79,16 @@ public class TripsActivity extends AppCompatActivity {
 
     private void startNewTripActivity() {
         NewTripRouteActivity.start(this);
+    }
+
+    public static void start(Context context) {
+        Intent intent = new Intent(context, TripsActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void restart(Context context) {
+        Intent intent = new Intent(context, TripsActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.startActivity(intent);
     }
 }
