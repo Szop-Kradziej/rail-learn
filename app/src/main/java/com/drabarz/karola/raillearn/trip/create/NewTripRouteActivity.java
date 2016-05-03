@@ -14,8 +14,6 @@ import com.drabarz.karola.raillearn.model.Route;
 
 public class NewTripRouteActivity extends AppCompatActivity{
 
-    Route route;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,14 +65,14 @@ public class NewTripRouteActivity extends AppCompatActivity{
     }
 
     private void onConfirmRouteButtonClicked() {
-        setRouteInputData();
+        Route route = getRouteInputData();
         startNewTripOfferActivity(route);
     }
 
-    private void setRouteInputData() {
+    private Route getRouteInputData() {
         Departure departure = getDepartureInputData();
         String arrival = TestData.getArrival();
-        route = new Route(departure, arrival);
+        return new Route(departure, arrival);
     }
 
     public Departure getDepartureInputData() {
