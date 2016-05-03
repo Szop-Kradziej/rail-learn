@@ -9,9 +9,12 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.drabarz.karola.raillearn.R;
+import com.drabarz.karola.raillearn.model.Departure;
 import com.drabarz.karola.raillearn.model.Route;
 
 public class NewTripRouteActivity extends AppCompatActivity{
+
+    Route route;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,8 +67,22 @@ public class NewTripRouteActivity extends AppCompatActivity{
     }
 
     private void onConfirmRouteButtonClicked() {
-        Route route = TestData.getExampleRoute();
-        startNewTripOfferActivity(route);;
+        setRouteInputData();
+        startNewTripOfferActivity(route);
+    }
+
+    private void setRouteInputData() {
+        Departure departure = getDepartureInputData();
+        String arrival = TestData.getArrival();
+        route = new Route(departure, arrival);
+    }
+
+    public Departure getDepartureInputData() {
+        String name = ((EditText) findViewById(R.id.inputStationNameEditText)).getText().toString();
+        String date = ((EditText) findViewById(R.id.inputStationDateEditText)).getText().toString();
+        String time = ((EditText) findViewById(R.id.inputStationTimeEditText)).getText().toString();
+
+        return new Departure(name, date, time);
     }
 
     private void startNewTripOfferActivity(Route route) {
