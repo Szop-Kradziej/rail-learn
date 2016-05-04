@@ -18,8 +18,7 @@
     <string name="hint_description">Description</string>
     <string name="hint_title">Title</string>
 
-    <!--<string name="service_endpoint">https://rail-learn.herokuapp.com</string>-->
-    <string name="service_endpoint">http://192.168.0.60:8080</string>
+    <string name="service_endpoint">https://rail-learn.herokuapp.com</string>
 
     <string name="create_action">create</string>
     <string name="join_action">join</string>

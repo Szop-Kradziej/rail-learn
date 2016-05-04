@@ -8,7 +8,13 @@ import android.widget.Button;
 
 import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Trip;
-import com.drabarz.karola.raillearn.service.protocol.JoinTripRequest;
+import com.drabarz.karola.raillearn.service.RailLearnJoinTripApi;
+import com.drabarz.karola.raillearn.service.ServiceFactory;
+import com.drabarz.karola.raillearn.trip.list.TripsActivity;
+
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 public class SelectedFullTripActivity extends FullTripActivity {
 
@@ -21,9 +27,22 @@ public class SelectedFullTripActivity extends FullTripActivity {
 
     @Override
     protected void onConfirmButtonClicked() {
-        //TODO: Send request to server
-        String json = new JoinTripRequest().getJson();
-        Log.i("SelectedFullTrip", json);
+        RailLearnJoinTripApi retrofitService = ServiceFactory.createRetrofitService(RailLearnJoinTripApi.class, getString(R.string.service_endpoint));
+        retrofitService.joinTrip("0")
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<Trip>() {
+                    @Override
+                    public void call(Trip trip) {
+                        TripsActivity.restart(SelectedFullTripActivity.this);
+                        Log.i("SelectFullTripActivity", trip.toString());
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Log.e("SelectFullTripActivity", "Service subscribe error");
+                    }
+                });
     }
 
     public static void start(Context context, Trip trip) {
