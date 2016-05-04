@@ -8,5 +8,5 @@ import rx.Observable;
 
 public interface RailLearnCreateTripApi {
     @POST("/trips")
-    Observable<Void> postTrip(@Body Trip trip);
+    Observable<Trip> postTrip(@Body Trip trip);
 }

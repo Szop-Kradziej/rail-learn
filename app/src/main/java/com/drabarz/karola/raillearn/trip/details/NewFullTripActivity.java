@@ -31,10 +31,11 @@ public class NewFullTripActivity extends FullTripActivity {
         retrofitService.postTrip(trip)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<Void>() {
+                .subscribe(new Action1<Trip>() {
                     @Override
-                    public void call(Void aVoid) {
+                    public void call(Trip trip) {
                         TripsActivity.restart(NewFullTripActivity.this);
+                        Log.i("NewFullTripActivity", trip.toString());
                     }
                 }, new Action1<Throwable>() {
                     @Override
