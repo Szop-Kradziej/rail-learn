@@ -50,27 +50,10 @@ public class LoginActivity extends ActionBarActivity {
 
         LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setReadPermissions("email");
-
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-
-                RailLearnLogInUserApi retrofitService = ServiceFactory.createRetrofitService(RailLearnLogInUserApi.class, getString(R.string.service_endpoint));
-                retrofitService.logInUser(loginResult.getAccessToken().getToken())
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Action1<Token>() {
-                                       @Override
-                                       public void call(Token token) {
-                                           onLogInSuccess(token.getToken());
-                                       }
-                                   }, new Action1<Throwable>() {
-                                       @Override
-                                       public void call(Throwable throwable) {
-                                           Log.e("LoginActivity", throwable.getMessage(), throwable);
-                                       }
-                                   }
-                        );
+                onFacebookLogInSuccess(loginResult.getAccessToken().getToken());
             }
 
             @Override
@@ -93,5 +76,24 @@ public class LoginActivity extends ActionBarActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void onFacebookLogInSuccess(String facebookToken) {
+        RailLearnLogInUserApi retrofitService = ServiceFactory.createRetrofitService(RailLearnLogInUserApi.class, getString(R.string.service_endpoint));
+        retrofitService.logInUser(facebookToken)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<Token>() {
+                               @Override
+                               public void call(Token token) {
+                                   onLogInSuccess(token.getToken());
+                               }
+                           }, new Action1<Throwable>() {
+                               @Override
+                               public void call(Throwable throwable) {
+                                   Log.e("LoginActivity", throwable.getMessage(), throwable);
+                               }
+                           }
+                );
     }
 }
