@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 
 import com.drabarz.karola.raillearn.R;
+import com.drabarz.karola.raillearn.model.Trip;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +20,11 @@ public class TripsGroupAdapter extends BaseAdapter {
         this.tripsActivity = tripsActivity;
     }
 
-    public void addTripItem(TripItem tripItem) {
-        tripsGroup.add(tripItem);
+    public void replaceTripItems(List<Trip> trips) {
+        tripsGroup.clear();
+        for (Trip trip : trips) {
+            tripsGroup.add(new TripItem(trip));
+        }
         notifyDataSetChanged();
     }
 

@@ -50,9 +50,7 @@ public class TripsActivity extends AppCompatActivity {
                 .subscribe(new Action1<List<Trip>>() {
                     @Override
                     public void call(List<Trip> trips) {
-                        for (Trip trip : trips) {
-                            tripsGroupAdapter.addTripItem(new TripItem(trip));
-                        }
+                        tripsGroupAdapter.replaceTripItems(trips);
                     }
                 }, new Action1<Throwable>() {
                     @Override
@@ -67,7 +65,6 @@ public class TripsActivity extends AppCompatActivity {
     }
 
     private void setNewTripButtonListener() {
-
         FloatingActionButton newTripButton = (FloatingActionButton) findViewById(R.id.newTripButton);
         newTripButton.setOnClickListener(new View.OnClickListener() {
             @Override
