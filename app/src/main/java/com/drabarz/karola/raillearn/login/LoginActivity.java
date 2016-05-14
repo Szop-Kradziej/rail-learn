@@ -7,7 +7,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 
 import com.drabarz.karola.raillearn.R;
-import com.drabarz.karola.raillearn.model.Token;
+import com.drabarz.karola.raillearn.model.LoginData;
 import com.drabarz.karola.raillearn.service.RailLearnLogInUserApi;
 import com.drabarz.karola.raillearn.service.ServiceFactory;
 import com.drabarz.karola.raillearn.trip.list.TripsActivity;
@@ -25,6 +25,7 @@ import rx.schedulers.Schedulers;
 public class LoginActivity extends ActionBarActivity {
 
     private static final String TOKEN = "token";
+    private static final String USER_ID = "user_id";
     private CallbackManager callbackManager;
 
     @Override
@@ -68,8 +69,9 @@ public class LoginActivity extends ActionBarActivity {
         });
     }
 
-    private void onLogInSuccess(String token) {
-        PreferenceManager.getDefaultSharedPreferences(this).edit().putString(TOKEN, token).commit();
+    private void onLogInSuccess(LoginData data) {
+        PreferenceManager.getDefaultSharedPreferences(this).edit().putString(TOKEN, data.getToken()).commit();
+        PreferenceManager.getDefaultSharedPreferences(this).edit().putString(USER_ID, data.getId()).commit();
         TripsActivity.start(LoginActivity.this);
     }
 
@@ -83,10 +85,10 @@ public class LoginActivity extends ActionBarActivity {
         retrofitService.logInUser(facebookToken)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<Token>() {
+                .subscribe(new Action1<LoginData>() {
                                @Override
-                               public void call(Token token) {
-                                   onLogInSuccess(token.getToken());
+                               public void call(LoginData data) {
+                                   onLogInSuccess(data);
                                }
                            }, new Action1<Throwable>() {
                                @Override

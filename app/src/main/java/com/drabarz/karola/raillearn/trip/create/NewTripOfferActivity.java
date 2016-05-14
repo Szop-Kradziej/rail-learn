@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,7 +42,7 @@ public class NewTripOfferActivity extends AppCompatActivity {
     }
 
     private void setSavedDescription() {
-        String description = PreferenceManager.getDefaultSharedPreferences(this).getString(DESCRIPTION,"");
+        String description = PreferenceManager.getDefaultSharedPreferences(this).getString(DESCRIPTION,null);
         EditText inputTripDescriptionEditText = (EditText) findViewById(R.id.inputTripDescriptionEditText);
         inputTripDescriptionEditText.setText(description);
     }
@@ -64,7 +65,9 @@ public class NewTripOfferActivity extends AppCompatActivity {
 
     private Trip createTripFromInputData() {
         Offer offer = getOfferInputData();
-        User user = TestData.getExampleUser();
+        String userId = getUserId();
+        Log.i("NewTripOfferAct", "User id: " + userId);
+        User user = new User("default_name", userId);
 
         return new Trip(user, offer, route);
     }
@@ -74,6 +77,10 @@ public class NewTripOfferActivity extends AppCompatActivity {
         String description = ((EditText) findViewById(R.id.inputTripDescriptionEditText)).getText().toString();
 
         return new Offer(title, description);
+    }
+
+    private String getUserId() {
+        return PreferenceManager.getDefaultSharedPreferences(this).getString("user_id", null);
     }
 
     private void saveDescription(String description) {

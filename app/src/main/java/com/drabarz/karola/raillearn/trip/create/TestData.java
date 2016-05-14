@@ -10,6 +10,6 @@ public class TestData {
     }
 
     public static User getExampleUser() {
-        return new User("Karola");
+        return new User("Karola", "id");
     }
 }
