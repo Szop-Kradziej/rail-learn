@@ -3,6 +3,7 @@ package com.drabarz.karola.raillearn.trip.create;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,7 @@ import com.drabarz.karola.raillearn.trip.details.NewFullTripActivity;
 public class NewTripOfferActivity extends AppCompatActivity {
 
     private static final String ROUTE = "route";
+    private static final String DESCRIPTION = "description";
     private Route route;
 
     @Override
@@ -27,7 +29,21 @@ public class NewTripOfferActivity extends AppCompatActivity {
 
         route = (Route) getIntent().getSerializableExtra(ROUTE);
 
+        if(isDescriptionSaved()) {
+            setSavedDescription();
+        }
+
         addConfirmOfferButtonListener();
+    }
+
+    private boolean isDescriptionSaved() {
+        return PreferenceManager.getDefaultSharedPreferences(this).contains(DESCRIPTION);
+    }
+
+    private void setSavedDescription() {
+        String description = PreferenceManager.getDefaultSharedPreferences(this).getString(DESCRIPTION,"");
+        EditText inputTripDescriptionEditText = (EditText) findViewById(R.id.inputTripDescriptionEditText);
+        inputTripDescriptionEditText.setText(description);
     }
 
     private void addConfirmOfferButtonListener() {
@@ -42,6 +58,7 @@ public class NewTripOfferActivity extends AppCompatActivity {
 
     private void onConfirmOfferButtonClicked() {
         Trip trip = createTripFromInputData();
+        saveDescription(trip.getOffer().getDescription());
         startNewFullTripActivity(trip);
     }
 
@@ -57,6 +74,10 @@ public class NewTripOfferActivity extends AppCompatActivity {
         String description = ((EditText) findViewById(R.id.inputTripDescriptionEditText)).getText().toString();
 
         return new Offer(title, description);
+    }
+
+    private void saveDescription(String description) {
+        PreferenceManager.getDefaultSharedPreferences(this).edit().putString(DESCRIPTION,description).commit();
     }
 
     private void startNewFullTripActivity(Trip trip) {
