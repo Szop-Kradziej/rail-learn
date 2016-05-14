@@ -19,10 +19,8 @@ import rx.schedulers.Schedulers;
 public class NewFullTripActivity extends FullTripActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Button confirmButton = (Button) findViewById(R.id.confirmButton);
-        confirmButton.setText(R.string.create);
+    protected String getConfirmButtonText() {
+        return getString(R.string.create);
     }
 
     @Override

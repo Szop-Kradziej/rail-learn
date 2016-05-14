@@ -16,13 +16,11 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
-public class SelectedFullTripActivity extends FullTripActivity {
+public class SelectedOtherFullTripActivity extends FullTripActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Button confirmButton = (Button) findViewById(R.id.confirmButton);
-        confirmButton.setText(R.string.join);
+    protected String getConfirmButtonText() {
+        return getString(R.string.join);
     }
 
     @Override
@@ -34,7 +32,7 @@ public class SelectedFullTripActivity extends FullTripActivity {
                 .subscribe(new Action1<Trip>() {
                     @Override
                     public void call(Trip trip) {
-                        TripsActivity.restart(SelectedFullTripActivity.this);
+                        TripsActivity.restart(SelectedOtherFullTripActivity.this);
                         Log.i("SelectFullTripActivity", trip.toString());
                     }
                 }, new Action1<Throwable>() {
@@ -46,7 +44,7 @@ public class SelectedFullTripActivity extends FullTripActivity {
     }
 
     public static void start(Context context, Trip trip) {
-        Intent intent = new Intent(context, SelectedFullTripActivity.class);
+        Intent intent = new Intent(context, SelectedOtherFullTripActivity.class);
         intent.putExtra(TRIP, trip);
         context.startActivity(intent);
     }

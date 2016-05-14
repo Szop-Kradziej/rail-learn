@@ -1,5 +1,6 @@
 package com.drabarz.karola.raillearn.trip.list;
 
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,10 +54,21 @@ public class TripsGroupAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tripsActivity.startSelectedFullTripActivity(tripItem.getTrip());
+                if(isMyTrip(tripItem.getTrip())) {
+                    tripsActivity.startSelectedMyFullTripActivity(tripItem.getTrip());
+                } else {
+                    tripsActivity.startSelectedOtherFullTripActivity(tripItem.getTrip());
+                }
             }
         });
 
         return view;
+    }
+
+    private boolean isMyTrip(Trip trip) {
+        String my_id = PreferenceManager.getDefaultSharedPreferences(tripsActivity).getString("user_id", null);
+        String trip_user_id = trip.getUser().getId();
+
+        return my_id.equals(trip_user_id);
     }
 }

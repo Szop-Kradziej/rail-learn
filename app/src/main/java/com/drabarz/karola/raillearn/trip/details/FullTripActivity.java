@@ -13,6 +13,7 @@ public abstract class FullTripActivity extends AppCompatActivity {
 
     protected static final String TRIP = "trip";
     protected Trip trip;
+    protected abstract String getConfirmButtonText();
 
     protected abstract void onConfirmButtonClicked();
 
@@ -20,8 +21,10 @@ public abstract class FullTripActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.full_trip_activity);
-
         bindLayout();
+
+        Button confirmButton = (Button) findViewById(R.id.confirmButton);
+        confirmButton.setText(getConfirmButtonText());
         addConfirmButtonListener();
     }
 
