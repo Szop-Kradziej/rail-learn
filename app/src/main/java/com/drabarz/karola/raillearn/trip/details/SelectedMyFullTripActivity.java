@@ -5,6 +5,7 @@ import android.content.Intent;
 
 import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Trip;
+import com.drabarz.karola.raillearn.trip.create.EditTripRouteActivity;
 
 public class SelectedMyFullTripActivity extends FullTripActivity {
 
@@ -15,7 +16,7 @@ public class SelectedMyFullTripActivity extends FullTripActivity {
 
     @Override
     protected void onConfirmButtonClicked() {
-
+        EditTripRouteActivity.start(this, trip);
     }
 
     public static void start(Context context, Trip trip) {

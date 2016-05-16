@@ -26,6 +26,7 @@
         <activity android:name=".trip.details.SelectedMyFullTripActivity"></activity>
         <activity android:name=".trip.create.NewTripRouteActivity"></activity>
         <activity android:name=".trip.create.NewTripOfferActivity"></activity>
+        <activity android:name=".trip.create.EditTripRouteActivity"></activity>
         <activity android:name="com.facebook.FacebookActivity"
             android:configChanges=
                 "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
