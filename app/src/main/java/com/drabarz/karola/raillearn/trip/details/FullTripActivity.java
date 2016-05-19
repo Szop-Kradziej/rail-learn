@@ -23,6 +23,8 @@ public abstract class FullTripActivity extends AppCompatActivity {
         setContentView(R.layout.full_trip_activity);
         bindLayout();
 
+        Button deleteButton = (Button) findViewById(R.id.deleteButton);
+        deleteButton.setVisibility(Button.GONE);
         Button confirmButton = (Button) findViewById(R.id.confirmButton);
         confirmButton.setText(getConfirmButtonText());
         addConfirmButtonListener();
