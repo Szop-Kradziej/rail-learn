@@ -24,6 +24,7 @@
         <activity android:name=".trip.details.NewFullTripActivity"></activity>
         <activity android:name=".trip.details.SelectedOtherFullTripActivity"></activity>
         <activity android:name=".trip.details.SelectedMyFullTripActivity"></activity>
+        <activity android:name=".trip.details.UpdatedFullTripActivity"></activity>
         <activity android:name=".trip.create.NewTripRouteActivity"></activity>
         <activity android:name=".trip.create.NewTripOfferActivity"></activity>
         <activity android:name=".trip.create.EditTripRouteActivity"></activity>

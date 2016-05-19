@@ -8,7 +8,7 @@ import android.widget.EditText;
 import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Route;
 import com.drabarz.karola.raillearn.model.Trip;
-import com.drabarz.karola.raillearn.trip.details.NewFullTripActivity;
+import com.drabarz.karola.raillearn.trip.details.UpdatedFullTripActivity;
 
 public class EditTripOfferActivity extends TripOfferActivity {
 
@@ -40,7 +40,7 @@ public class EditTripOfferActivity extends TripOfferActivity {
     }
 
     private void startNewFullTripActivity(Trip trip) {
-        NewFullTripActivity.start(this, trip);
+        UpdatedFullTripActivity.start(this, trip);
     }
 
     public static void start(Context context, Trip trip, Route route) {

@@ -25,4 +25,5 @@
 
     <string name="create_action">create</string>
     <string name="join_action">join</string>
+    <string name="update">Update</string>
 </resources>
