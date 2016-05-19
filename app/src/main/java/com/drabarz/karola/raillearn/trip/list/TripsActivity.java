@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
@@ -31,6 +32,8 @@ public class TripsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trips_activity);
+        setSupportActionBar((Toolbar) findViewById(R.id.tripActivityToolbar));
+        getSupportActionBar().setTitle(getString(R.string.app_name));
 
         setAdapter();
         setService();
