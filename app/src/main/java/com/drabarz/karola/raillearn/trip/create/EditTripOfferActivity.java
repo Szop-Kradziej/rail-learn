@@ -35,6 +35,7 @@ public class EditTripOfferActivity extends TripOfferActivity {
     @Override
     protected void onConfirmOfferButtonClicked() {
         Trip editedTrip = createTripFromInputData();
+        editedTrip.setId(trip.getId());
         saveDescription(editedTrip.getOffer().getDescription());
         startNewFullTripActivity(editedTrip);
     }
