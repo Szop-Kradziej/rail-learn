@@ -44,7 +44,7 @@ public class EditTripRouteActivity extends TripRouteActivity {
     }
 
     private void startNewTripOfferActivity(Route route) {
-        NewTripOfferActivity.start(this, route);
+        EditTripOfferActivity.start(this, trip, route);
     }
 
     public static void start(Context context, Trip trip) {
