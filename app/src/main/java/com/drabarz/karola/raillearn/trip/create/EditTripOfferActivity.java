@@ -26,10 +26,10 @@ public class EditTripOfferActivity extends TripOfferActivity {
 
     private void setTripData() {
         EditText inputTripTitleEditText = ((EditText) findViewById(R.id.inputTripTitleEditText));
-        inputTripTitleEditText.setText(trip.getRoute().getDeparture().getName());
+        inputTripTitleEditText.setText(trip.getOffer().getTitle());
 
         EditText inputTripDescriptionEditText = ((EditText) findViewById(R.id.inputTripDescriptionEditText));
-        inputTripDescriptionEditText.setText(trip.getRoute().getDeparture().getDate());
+        inputTripDescriptionEditText.setText(trip.getOffer().getDescription());
     }
 
     @Override
