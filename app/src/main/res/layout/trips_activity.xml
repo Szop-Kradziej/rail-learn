@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/tripActivityToolbar"
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/text_gradient_start"
-        android:title="@string/app_name"
-        android:titleTextColor="@android:color/white"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        android:layout_height="wrap_content">
 
-    <include
-        layout="@layout/trips_group"/>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tripActivityToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/text_gradient_start"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            android:title="@string/app_name"
+            android:titleTextColor="@android:color/white"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+    </android.support.design.widget.AppBarLayout>
+
+    <include layout="@layout/trips_group" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/newTripButton"
@@ -25,5 +29,5 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
-        android:src="@drawable/ic_plus_white"/>
+        android:src="@drawable/ic_plus_white" />
 </android.support.design.widget.CoordinatorLayout>
