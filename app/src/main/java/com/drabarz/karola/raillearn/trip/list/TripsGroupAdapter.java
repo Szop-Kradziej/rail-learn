@@ -14,7 +14,9 @@ import java.util.List;
 
 public class TripsGroupAdapter extends BaseAdapter {
 
-    private final List<TripItem> tripsGroup = new ArrayList<TripItem>();
+    private final List<TripItem> currentTrips = new ArrayList<TripItem>();
+    private final List<TripItem> allTrips = new ArrayList<TripItem>();
+
     private TripsActivity tripsActivity;
 
     public TripsGroupAdapter(TripsActivity tripsActivity) {
@@ -22,21 +24,23 @@ public class TripsGroupAdapter extends BaseAdapter {
     }
 
     public void replaceTripItems(List<Trip> trips) {
-        tripsGroup.clear();
+        currentTrips.clear();
+        allTrips.clear();
         for (Trip trip : trips) {
-            tripsGroup.add(new TripItem(trip));
+            allTrips.add(new TripItem(trip));
         }
+        currentTrips.addAll(allTrips);
         notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return tripsGroup.size();
+        return currentTrips.size();
     }
 
     @Override
     public TripItem getItem(int position) {
-        return tripsGroup.get(position);
+        return currentTrips.get(position);
     }
 
     @Override
@@ -47,7 +51,7 @@ public class TripsGroupAdapter extends BaseAdapter {
     @Override
     public View getView(int position, final View convertView, ViewGroup viewGroup) {
 
-        final TripItem tripItem = tripsGroup.get(position);
+        final TripItem tripItem = currentTrips.get(position);
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.trip_field, viewGroup, false);
         tripItem.bindLayout(view);
 
@@ -70,5 +74,36 @@ public class TripsGroupAdapter extends BaseAdapter {
         String trip_user_id = trip.getUser().getId();
 
         return my_id.equals(trip_user_id);
+    }
+
+    public void showAll() {
+        currentTrips.clear();
+        currentTrips.addAll(allTrips);
+        notifyDataSetChanged();
+    }
+
+    public void showMyOffers() {
+        currentTrips.clear();
+        for(TripItem tripItem: allTrips) {
+            if(isMyTrip(tripItem.getTrip())) {
+                currentTrips.add(tripItem);
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+    public void showMyRequests() {
+        currentTrips.clear();
+        notifyDataSetChanged();
+    }
+
+    public void showOtherOffers() {
+        currentTrips.clear();
+        for (TripItem tripItem : allTrips) {
+            if(!isMyTrip(tripItem.getTrip())) {
+                currentTrips.add(tripItem);
+            }
+        }
+        notifyDataSetChanged();
     }
 }

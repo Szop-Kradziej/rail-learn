@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
 
@@ -42,13 +43,6 @@ public class TripsActivity extends AppCompatActivity {
         setNewTripButtonListener();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.trips_menu, menu);
-        return true;
-    }
-
     private void setAdapter() {
         ListView tripsGroupView = (ListView) findViewById(R.id.tripsGroupView);
         tripsGroupView.setAdapter(tripsGroupAdapter);
@@ -78,7 +72,7 @@ public class TripsActivity extends AppCompatActivity {
     }
 
     public void startSelectedMyFullTripActivity(Trip trip) {
-        SelectedMyFullTripActivity.start(this,trip);
+        SelectedMyFullTripActivity.start(this, trip);
     }
 
     private void setNewTripButtonListener() {
@@ -89,6 +83,33 @@ public class TripsActivity extends AppCompatActivity {
                 startNewTripActivity();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.trips_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.allTripsMenuItem:
+                tripsGroupAdapter.showAll();
+                return true;
+            case R.id.myOffersMenuItem:
+                tripsGroupAdapter.showMyOffers();
+                return true;
+            case R.id.myRequestsMenuItem:
+                tripsGroupAdapter.showMyRequests();
+                return true;
+            case R.id.otherOffersMenuItem:
+                tripsGroupAdapter.showOtherOffers();
+                return true;
+            default:
+                return false;
+        }
     }
 
     private void startNewTripActivity() {
