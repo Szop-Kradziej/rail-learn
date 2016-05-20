@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/filterMenuItem"
-        android:title="All Trips" />
+        android:id="@+id/allTripsMenuItem"
+        android:title="@string/all_trips_menu_item" />
+    <item
+        android:id="@+id/myOffersMenuItem"
+        android:title="@string/my_offers_menu_items" />
+    <item
+        android:id="@+id/myRequestsMenuItem"
+        android:title="@string/my_requests_menu_item" />
+    <item
+        android:id="@+id/otherOffersMenuItem"
+        android:title="@string/other_offers_menu_item" />
 </menu>

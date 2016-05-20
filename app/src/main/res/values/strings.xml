@@ -27,4 +27,8 @@
     <string name="create_action">create</string>
     <string name="join_action">join</string>
     <string name="update">Update</string>
+    <string name="all_trips_menu_item">All Trips</string>
+    <string name="my_offers_menu_items">My Offers</string>
+    <string name="my_requests_menu_item">My Requests</string>
+    <string name="other_offers_menu_item">Other Offers</string>
 </resources>
