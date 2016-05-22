@@ -112,7 +112,7 @@ public class TripsGroupAdapter extends BaseAdapter {
     public void showOtherOffers() {
         currentTrips.clear();
         for (TripItem tripItem : allTrips) {
-            if(!isMyTrip(tripItem.getTrip())) {
+            if(!isMyTrip(tripItem.getTrip()) && !isMyJoinedTrip(tripItem.getTrip())) {
                 currentTrips.add(tripItem);
             }
         }
