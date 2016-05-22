@@ -70,10 +70,10 @@ public class TripsGroupAdapter extends BaseAdapter {
     }
 
     private boolean isMyTrip(Trip trip) {
-        String my_id = PreferenceManager.getDefaultSharedPreferences(tripsActivity).getString("user_id", null);
-        String trip_user_id = trip.getUser().getId();
+        String myId = PreferenceManager.getDefaultSharedPreferences(tripsActivity).getString("user_id", null);
+        String tripUserId = trip.getUser().getId();
 
-        return my_id.equals(trip_user_id);
+        return myId.equals(tripUserId);
     }
 
     public void showAll() {
@@ -94,7 +94,19 @@ public class TripsGroupAdapter extends BaseAdapter {
 
     public void showMyRequests() {
         currentTrips.clear();
+        for(TripItem tripItem: allTrips) {
+            if(isMyJoinedTrip(tripItem.getTrip())) {
+                currentTrips.add(tripItem);
+            }
+        }
         notifyDataSetChanged();
+    }
+
+    private boolean isMyJoinedTrip(Trip trip) {
+        String myId = PreferenceManager.getDefaultSharedPreferences(tripsActivity).getString("user_id", null);
+        String joinedUserId = trip.getJoinedUser();
+
+        return myId.equals(joinedUserId);
     }
 
     public void showOtherOffers() {

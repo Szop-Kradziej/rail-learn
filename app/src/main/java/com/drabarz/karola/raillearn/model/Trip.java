@@ -8,6 +8,15 @@ public class Trip  implements Serializable{
     private final User user;
     private final Offer offer;
     private final Route route;
+    private String joinedUser;
+
+    public Trip(String joinedUser, Route route, Offer offer, User user, String id) {
+        this.joinedUser = joinedUser;
+        this.route = route;
+        this.offer = offer;
+        this.user = user;
+        this.id = id;
+    }
 
     public Trip(String id, User user, Offer offer, Route route) {
         this.id = id;
@@ -41,5 +50,9 @@ public class Trip  implements Serializable{
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getJoinedUser() {
+        return joinedUser;
     }
 }

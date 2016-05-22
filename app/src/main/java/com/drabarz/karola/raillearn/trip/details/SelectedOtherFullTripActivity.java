@@ -2,6 +2,7 @@ package com.drabarz.karola.raillearn.trip.details;
 
 import android.content.Context;
 import android.content.Intent;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.drabarz.karola.raillearn.R;
@@ -23,8 +24,10 @@ public class SelectedOtherFullTripActivity extends FullTripActivity {
 
     @Override
     protected void onConfirmButtonClicked() {
+        String myId = PreferenceManager.getDefaultSharedPreferences(this).getString("user_id", null);
+
         RailLearnJoinTripApi retrofitService = ServiceFactory.createRetrofitService(RailLearnJoinTripApi.class, getString(R.string.service_endpoint));
-        retrofitService.joinTrip(trip.getId())
+        retrofitService.joinTrip(trip.getId(), myId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<Trip>() {
