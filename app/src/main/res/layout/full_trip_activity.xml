@@ -48,6 +48,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:backgroundTint="@color/dark_pink"
             android:paddingRight="@dimen/activity_margin"
             android:text="@string/delete"/>
 
@@ -55,6 +56,7 @@
             android:id="@+id/confirmButton"
             android:layout_width="0dp"
             android:paddingLeft="@dimen/activity_margin"
+            android:backgroundTint="@color/dark_green"
             android:layout_height="match_parent"
             android:layout_weight="1" />
     </LinearLayout>

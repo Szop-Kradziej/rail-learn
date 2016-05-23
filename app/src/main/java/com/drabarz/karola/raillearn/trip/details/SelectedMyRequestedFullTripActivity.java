@@ -2,7 +2,10 @@ package com.drabarz.karola.raillearn.trip.details;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Trip;
@@ -15,9 +18,36 @@ import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 public class SelectedMyRequestedFullTripActivity extends FullTripActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Button confirmButton = (Button) findViewById(R.id.confirmButton);
+        confirmButton.setVisibility(Button.GONE);
+
+        setCancelButton();
+    }
+
+    private void setCancelButton() {
+        Button cancelButton = (Button) findViewById(R.id.deleteButton);
+        cancelButton.setVisibility(Button.VISIBLE);
+        cancelButton.setText(getConfirmButtonText());
+        addCancelButtonListener(cancelButton);
+    }
+
     @Override
     protected String getConfirmButtonText() {
         return getString(R.string.cancel);
+    }
+
+    private void addCancelButtonListener(Button cancelButton) {
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onConfirmButtonClicked();
+            }
+        });
     }
 
     @Override

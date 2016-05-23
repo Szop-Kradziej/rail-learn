@@ -4,4 +4,6 @@
     <color name="text_gradient_end">#6fffffff</color>
     <color name="black">#000000</color>
     <color name="dark_grey">#222222</color>
+    <color name="dark_green">#00bfa5</color>
+    <color name="dark_pink">#ff4081</color>
 </resources>
