@@ -14,13 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="5"
+        android:padding="@dimen/activity_margin"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="left"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:text="@string/Description"
             android:textColor="@color/black"
             android:textStyle="bold" />
@@ -30,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_gravity="center"
-            android:layout_weight="3"
+            android:layout_weight="2"
             android:gravity="center"
             android:textColor="@color/dark_grey" />
     </LinearLayout>
@@ -38,7 +39,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
+        android:padding="@dimen/activity_margin"
         android:orientation="horizontal">
 
         <Button
@@ -46,11 +48,13 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:paddingRight="@dimen/activity_margin"
             android:text="@string/delete"/>
 
         <Button
             android:id="@+id/confirmButton"
             android:layout_width="0dp"
+            android:paddingLeft="@dimen/activity_margin"
             android:layout_height="match_parent"
             android:layout_weight="1" />
     </LinearLayout>
