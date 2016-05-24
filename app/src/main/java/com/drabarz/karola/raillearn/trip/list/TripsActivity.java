@@ -3,6 +3,7 @@ package com.drabarz.karola.raillearn.trip.list;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -62,9 +63,10 @@ public class TripsActivity extends AppCompatActivity {
     }
 
     private void setService() {
-        RailLearnService service = ServiceFactory.createRetrofitService(RailLearnService.class, getString(R.string.service_endpoint));
+        String myId = PreferenceManager.getDefaultSharedPreferences(this).getString("user_id", null);
 
-        service.getTrip()
+        RailLearnService service = ServiceFactory.createRetrofitService(RailLearnService.class, getString(R.string.service_endpoint));
+        service.getTrip(myId)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<List<Trip>>() {

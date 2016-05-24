@@ -9,5 +9,5 @@ import rx.Observable;
 
 public interface RailLearnJoinTripApi {
     @POST("/trips/{trip_id}/join")
-    Observable<Trip> joinTrip(@Path("trip_id") String tripId, @Query("user_id") String userIid);
+    Observable<Trip> joinTrip(@Path("trip_id") String tripId, @Query("user_id") String userId);
 }
