@@ -47,12 +47,13 @@ public class SelectedMyFullTripActivity extends FullTripActivity {
                 .subscribe(new Action1<String>() {
                     @Override
                     public void call(String id) {
-                        TripsActivity.restart(SelectedMyFullTripActivity.this);
+                        TripsActivity.restart(SelectedMyFullTripActivity.this, "Trip deleted");
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
                         Log.e("SelectedMyTripActivity", "Service subscribe error");
+                        TripsActivity.restart(SelectedMyFullTripActivity.this, null);
                     }
                 });
     }

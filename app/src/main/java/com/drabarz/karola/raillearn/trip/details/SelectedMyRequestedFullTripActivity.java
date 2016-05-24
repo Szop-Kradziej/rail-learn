@@ -59,16 +59,15 @@ public class SelectedMyRequestedFullTripActivity extends FullTripActivity {
                 .subscribe(new Action1<Trip>() {
                     @Override
                     public void call(Trip trip) {
-                        TripsActivity.restart(SelectedMyRequestedFullTripActivity.this);
+                        TripsActivity.restart(SelectedMyRequestedFullTripActivity.this, "Trip canceled");
                     }
                 }, new Action1<Throwable>() {
                     @Override
-                    public void call (Throwable throwable){
+                    public void call(Throwable throwable) {
                         Log.e("SelectedMyRequestedTrip", "Service subscribe error");
+                        TripsActivity.restart(SelectedMyRequestedFullTripActivity.this, null);
                     }
                 });
-
-        TripsActivity.restart(this);
     }
 
     public static void start(Context context, Trip trip) {

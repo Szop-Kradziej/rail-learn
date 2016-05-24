@@ -3,7 +3,9 @@ package com.drabarz.karola.raillearn.trip.list;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -30,6 +32,7 @@ import rx.schedulers.Schedulers;
 
 public class TripsActivity extends AppCompatActivity {
 
+    private final static String TEXT_TO_SHOW = "text_to_show";
     private TripsGroupAdapter tripsGroupAdapter = new TripsGroupAdapter(this);
 
     @Override
@@ -37,11 +40,20 @@ public class TripsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.trips_activity);
         setSupportActionBar((Toolbar) findViewById(R.id.tripActivityToolbar));
-        getSupportActionBar().setTitle(getString(R.string.app_name));
+        getSupportActionBar().setTitle(getString(R.string.trips));
+        showText(getIntent().getStringExtra(TEXT_TO_SHOW));
 
         setAdapter();
         setService();
         setNewTripButtonListener();
+    }
+
+    private void showText(String text) {
+        if(text != null) {
+            CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.tripsActivityLayout);
+            Snackbar snackbar = Snackbar.make(coordinatorLayout, text, Snackbar.LENGTH_LONG);
+            snackbar.show();
+        }
     }
 
     private void setAdapter() {
@@ -121,13 +133,15 @@ public class TripsActivity extends AppCompatActivity {
         NewTripRouteActivity.start(this);
     }
 
-    public static void start(Context context) {
+    public static void start(Context context, String text) {
         Intent intent = new Intent(context, TripsActivity.class);
+        intent.putExtra(TEXT_TO_SHOW, text);
         context.startActivity(intent);
     }
 
-    public static void restart(Context context) {
+    public static void restart(Context context, String text) {
         Intent intent = new Intent(context, TripsActivity.class);
+        intent.putExtra(TEXT_TO_SHOW, text);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         context.startActivity(intent);
     }

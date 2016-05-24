@@ -30,16 +30,15 @@ public class UpdatedFullTripActivity extends FullTripActivity {
                 .subscribe(new Action1<Trip>() {
                     @Override
                     public void call(Trip trip) {
-                        TripsActivity.restart(UpdatedFullTripActivity.this);
+                        TripsActivity.restart(UpdatedFullTripActivity.this, "Trip updated");
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
                         Log.e("NewFullTripActivity", "Service subscribe error");
+                        TripsActivity.restart(UpdatedFullTripActivity.this, null);
                     }
                 });
-
-        TripsActivity.restart(this);
     }
 
     public static void start(Context context, Trip trip) {

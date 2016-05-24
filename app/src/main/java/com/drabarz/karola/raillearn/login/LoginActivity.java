@@ -33,7 +33,7 @@ public class LoginActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
 
         if (isLoggedIn()) {
-            TripsActivity.start(LoginActivity.this);
+            TripsActivity.start(LoginActivity.this, null);
         } else {
             showLogInForm();
         }
@@ -72,7 +72,7 @@ public class LoginActivity extends ActionBarActivity {
     private void onLogInSuccess(LoginData data) {
         PreferenceManager.getDefaultSharedPreferences(this).edit().putString(TOKEN, data.getToken()).commit();
         PreferenceManager.getDefaultSharedPreferences(this).edit().putString(USER_ID, data.getId()).commit();
-        TripsActivity.start(LoginActivity.this);
+        TripsActivity.start(LoginActivity.this, null);
     }
 
     @Override

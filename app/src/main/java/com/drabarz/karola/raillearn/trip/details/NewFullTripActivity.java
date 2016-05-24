@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 
 import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Trip;
@@ -32,13 +31,14 @@ public class NewFullTripActivity extends FullTripActivity {
                 .subscribe(new Action1<Trip>() {
                     @Override
                     public void call(Trip trip) {
-                        TripsActivity.restart(NewFullTripActivity.this);
+                        TripsActivity.restart(NewFullTripActivity.this, "Trip created");
                         Log.i("NewFullTripActivity", trip.toString());
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
                         Log.e("NewFullTripActivity", "Service subscribe error");
+                        TripsActivity.restart(NewFullTripActivity.this, null);
                     }
                 });
     }

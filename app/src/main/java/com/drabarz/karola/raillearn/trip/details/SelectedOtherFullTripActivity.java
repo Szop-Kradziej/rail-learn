@@ -33,13 +33,14 @@ public class SelectedOtherFullTripActivity extends FullTripActivity {
                 .subscribe(new Action1<Trip>() {
                     @Override
                     public void call(Trip trip) {
-                        TripsActivity.restart(SelectedOtherFullTripActivity.this);
+                        TripsActivity.restart(SelectedOtherFullTripActivity.this, "Trip joined");
                         Log.i("SelectFullTripActivity", trip.toString());
                     }
                 }, new Action1<Throwable>() {
                     @Override
                     public void call(Throwable throwable) {
                         Log.e("SelectFullTripActivity", "Service subscribe error");
+                        TripsActivity.restart(SelectedOtherFullTripActivity.this, null);
                     }
                 });
     }
