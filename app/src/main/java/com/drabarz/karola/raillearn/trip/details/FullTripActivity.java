@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Trip;
+import com.squareup.picasso.Picasso;
 
 public abstract class FullTripActivity extends AppCompatActivity {
 
@@ -48,6 +50,8 @@ public abstract class FullTripActivity extends AppCompatActivity {
         setTripTime(trip.getRoute().getDeparture().getTime());
         setUserName(trip.getUser().getName());
         setTripDescription(trip.getOffer().getDescription());
+        setUserProfilePhoto(trip.getUser().getProfilPhoto());
+        setUserCoverPhoto(trip.getUser().getCoverPhoto());
     }
 
     private void setTripTitle(String tripTitle) {
@@ -73,6 +77,16 @@ public abstract class FullTripActivity extends AppCompatActivity {
     private void setUserName(String userName) {
         TextView userNameTextView = (TextView) findViewById(R.id.userNameTextView);
         userNameTextView.setText(userName);
+    }
+
+    private void setUserProfilePhoto(String profilePhotoURL) {
+        ImageView profilePicture = (ImageView) findViewById(R.id.profilePictureImageView);
+        Picasso.with(this).load(profilePhotoURL).into(profilePicture);
+    }
+
+    private void setUserCoverPhoto(String coverPhotoURL) {
+        ImageView coverPicture = (ImageView) findViewById(R.id.coverPictureImageView);
+        Picasso.with(this).load(coverPhotoURL).into(coverPicture);
     }
 
     public void setTripDescription(String tripDescription) {
