@@ -5,9 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 
 import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Trip;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +55,11 @@ public class TripsGroupAdapter extends BaseAdapter {
 
         final TripItem tripItem = currentTrips.get(position);
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.trip_field, viewGroup, false);
+
+        ImageView coverPicture = (ImageView) view.findViewById(R.id.coverPictureImageView);
+        String coverPhotoURL = tripItem.getTrip().getUser().getCoverPhoto();
+        Picasso.with(view.getContext()).load(coverPhotoURL).into(coverPicture);
+
         tripItem.bindLayout(view);
 
         view.setOnClickListener(new View.OnClickListener() {

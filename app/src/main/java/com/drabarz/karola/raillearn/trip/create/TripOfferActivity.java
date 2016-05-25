@@ -45,7 +45,7 @@ public abstract class TripOfferActivity extends AppCompatActivity {
         Offer offer = getOfferInputData();
         String userId = getUserId();
         Log.i("NewTripOfferAct", "User id: " + userId);
-        User user = new User("default_name", userId);
+        User user = new User("Karolina", userId, "http://i.imgur.com/jwsfAfh.jpg");
 
         return new Trip(user, offer, route);
     }
