@@ -30,6 +30,23 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    signingConfigs {
+        debug {
+            storeFile file("keystore.jks")
+            storePassword "bazyl3"
+            keyAlias "rail-learn"
+            keyPassword "bazyl3"
+        }
+
+        release {
+            storeFile file("keystore.jks")
+            storePassword "bazyl3"
+            keyAlias "rail-learn"
+            keyPassword "bazyl3"
+        }
+    }
+
     packagingOptions {
         exclude 'LICENSE.txt'
     }
