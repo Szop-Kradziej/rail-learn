@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "846606809473",
+    "project_id": "raillearn"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846606809473:android:c49ec13d4ae8c658",
+        "android_client_info": {
+          "package_name": "com.drabarz.karola.raillearn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "846606809473-vqj1ae0ds3qqmjq81oai1d0719hgf1ct.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.drabarz.karola.raillearn",
+            "certificate_hash": "56948CEA81610FC83F89D87AF5861FE3F4EB2313"
+          }
+        },
+        {
+          "client_id": "846606809473-0m2k6cvbu7msa65vqkla4217cb7ghk59.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGtjoaq1LK1bAfvlEKvLPjhjPQVgO__YE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
