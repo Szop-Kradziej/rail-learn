@@ -24,6 +24,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import java.util.Random;
+
 import rx.android.schedulers.AndroidSchedulers;
 import rx.functions.Action1;
 import rx.schedulers.Schedulers;
@@ -123,7 +125,7 @@ public class LoginActivity extends ActionBarActivity implements GoogleApiClient.
     private void handleSignInResult(GoogleSignInResult result) {
       //  if (result.isSuccess()) {
       //      GoogleSignInAccount account = result.getSignInAccount();
-            onLogInSuccess("random_string");//account.getIdToken());
+            onLogInSuccess(getRandomToken());//account.getIdToken());
       //  } else {
       //      Log.e("LoginActivity", "Google login error: " + result.getStatus().getStatusMessage());
       //  }
@@ -146,6 +148,10 @@ public class LoginActivity extends ActionBarActivity implements GoogleApiClient.
                                }
                            }
                 );
+    }
+
+    private String getRandomToken() {
+        return String.valueOf(new Random().nextLong());
     }
 
     @Override
