@@ -24,6 +24,7 @@
     <string name="hint_title">Title</string>
 
     <string name="service_endpoint">https://rail-learn.herokuapp.com</string>
+    <string name="sms_endpoint">https://api.bihapi.pl</string>
 
     <string name="create_action">create</string>
     <string name="join_action">join</string>

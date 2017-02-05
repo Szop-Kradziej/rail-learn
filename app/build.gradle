@@ -66,6 +66,7 @@ dependencies {
     compile 'com.facebook.android:facebook-android-sdk:4.11.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.google.android.gms:play-services-auth:9.0.0'
+    compile "com.squareup.okhttp3:logging-interceptor:3.2.0"
 
     androidTestCompile("com.android.support.test.espresso:espresso-core:$espresso_version") {
         exclude group: 'com.android.support'

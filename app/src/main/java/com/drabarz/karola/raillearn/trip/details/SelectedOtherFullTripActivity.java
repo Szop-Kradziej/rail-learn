@@ -7,8 +7,10 @@ import android.util.Log;
 
 import com.drabarz.karola.raillearn.R;
 import com.drabarz.karola.raillearn.model.Trip;
+import com.drabarz.karola.raillearn.service.RailLearnCancelJoinTripApi;
 import com.drabarz.karola.raillearn.service.RailLearnJoinTripApi;
 import com.drabarz.karola.raillearn.service.ServiceFactory;
+import com.drabarz.karola.raillearn.service.orange.SmsResponse;
 import com.drabarz.karola.raillearn.trip.list.TripsActivity;
 
 import rx.android.schedulers.AndroidSchedulers;
@@ -24,6 +26,29 @@ public class SelectedOtherFullTripActivity extends FullTripActivity {
 
     @Override
     protected void onConfirmButtonClicked() {
+        sendSms();
+        joinTrip();
+    }
+
+    private void sendSms() {
+        RailLearnJoinTripApi retrofitSmsService = ServiceFactory.createRetrofitService(RailLearnJoinTripApi.class, getString(R.string.sms_endpoint));
+        retrofitSmsService.sendSms()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Action1<SmsResponse>() {
+                    @Override
+                    public void call(SmsResponse smsResponse) {
+                        Log.i("Sms notification send", smsResponse.toString());
+                    }
+                }, new Action1<Throwable>() {
+                    @Override
+                    public void call(Throwable throwable) {
+                        Log.e("SelectFullTripActivity", "Sms send error", throwable);
+                    }
+                });
+    }
+
+    private void joinTrip() {
         String myId = PreferenceManager.getDefaultSharedPreferences(this).getString("user_id", null);
 
         RailLearnJoinTripApi retrofitService = ServiceFactory.createRetrofitService(RailLearnJoinTripApi.class, getString(R.string.service_endpoint));

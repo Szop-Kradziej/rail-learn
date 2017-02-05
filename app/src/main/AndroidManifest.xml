@@ -14,6 +14,15 @@
             android:value="@string/facebook_app_id" />
 
         <activity
+            android:name=".login.SmsActiity"
+            android:label="send sms activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".login.LoginActivity"
             android:label="@string/app_name">
             <intent-filter>
