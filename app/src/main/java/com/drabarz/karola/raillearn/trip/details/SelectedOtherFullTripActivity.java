@@ -10,6 +10,7 @@ import com.drabarz.karola.raillearn.model.Trip;
 import com.drabarz.karola.raillearn.service.RailLearnCancelJoinTripApi;
 import com.drabarz.karola.raillearn.service.RailLearnJoinTripApi;
 import com.drabarz.karola.raillearn.service.ServiceFactory;
+import com.drabarz.karola.raillearn.service.orange.SendSmsApi;
 import com.drabarz.karola.raillearn.service.orange.SmsResponse;
 import com.drabarz.karola.raillearn.trip.list.TripsActivity;
 
@@ -34,7 +35,7 @@ public class SelectedOtherFullTripActivity extends FullTripActivity {
 
     private void sendSms() {
         String message = createSmsMessage();
-        RailLearnJoinTripApi retrofitSmsService = ServiceFactory.createRetrofitService(RailLearnJoinTripApi.class, getString(R.string.sms_endpoint));
+        SendSmsApi retrofitSmsService = ServiceFactory.createRetrofitService(SendSmsApi.class, getString(R.string.sms_endpoint));
 
         retrofitSmsService.sendSms(message)
                 .subscribeOn(Schedulers.io())
