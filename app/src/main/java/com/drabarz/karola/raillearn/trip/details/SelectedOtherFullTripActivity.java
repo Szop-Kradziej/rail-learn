@@ -19,6 +19,8 @@ import rx.schedulers.Schedulers;
 
 public class SelectedOtherFullTripActivity extends FullTripActivity {
 
+    private static final String NAME = "name";
+
     @Override
     protected String getConfirmButtonText() {
         return getString(R.string.join);
@@ -31,8 +33,10 @@ public class SelectedOtherFullTripActivity extends FullTripActivity {
     }
 
     private void sendSms() {
+        String message = createSmsMessage();
         RailLearnJoinTripApi retrofitSmsService = ServiceFactory.createRetrofitService(RailLearnJoinTripApi.class, getString(R.string.sms_endpoint));
-        retrofitSmsService.sendSms()
+
+        retrofitSmsService.sendSms(message)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Action1<SmsResponse>() {
@@ -46,6 +50,12 @@ public class SelectedOtherFullTripActivity extends FullTripActivity {
                         Log.e("SelectFullTripActivity", "Sms send error", throwable);
                     }
                 });
+    }
+
+    private String createSmsMessage() {
+        String myName = PreferenceManager.getDefaultSharedPreferences(this).getString(NAME, null);
+        return "Hej " + trip.getUser().getName() + " !\n" +
+                myName + " chce dolaczyc do Twojej podrozy: " + trip.getOffer().getTitle();
     }
 
     private void joinTrip() {

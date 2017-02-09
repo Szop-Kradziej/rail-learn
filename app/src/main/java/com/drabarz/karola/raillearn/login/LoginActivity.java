@@ -35,6 +35,8 @@ public class LoginActivity extends ActionBarActivity implements GoogleApiClient.
     private static final String TOKEN = "token";
     private static final String USER_ID = "user_id";
     private static final int RC_SIGN_IN = 1276;
+    private static final String NAME = "name";
+    private static final String MY_USER_NAME = "Karolina";
     private CallbackManager callbackManager;
     private GoogleApiClient googleApiClient;
 
@@ -109,6 +111,7 @@ public class LoginActivity extends ActionBarActivity implements GoogleApiClient.
     private void onLogInSuccess(LoginData data) {
         PreferenceManager.getDefaultSharedPreferences(this).edit().putString(TOKEN, data.getToken()).commit();
         PreferenceManager.getDefaultSharedPreferences(this).edit().putString(USER_ID, data.getId()).commit();
+        PreferenceManager.getDefaultSharedPreferences(this).edit().putString(NAME, MY_USER_NAME).commit();
         TripsActivity.start(LoginActivity.this, null);
     }
 
