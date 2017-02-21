@@ -50,7 +50,7 @@ public abstract class FullTripActivity extends AppCompatActivity {
         setTripTime(trip.getRoute().getDeparture().getTime());
         setUserName(trip.getUser().getName());
         setTripDescription(trip.getOffer().getDescription());
-        setUserProfilePhoto(trip.getUser().getProfilPhoto());
+        setUserProfilePhoto(trip.getUser().getProfilePhoto());
         setUserCoverPhoto(trip.getUser().getCoverPhoto());
     }
 

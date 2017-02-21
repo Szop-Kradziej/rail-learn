@@ -61,7 +61,7 @@ public class TripsGroupAdapter extends BaseAdapter {
         Picasso.with(view.getContext()).load(coverPhotoURL).into(coverPicture);
 
         ImageView profilPicture = (ImageView) view.findViewById(R.id.profilePictureImageView);
-        String profilPhotoURL = tripItem.getTrip().getUser().getProfilPhoto();
+        String profilPhotoURL = tripItem.getTrip().getUser().getProfilePhoto();
         Picasso.with(view.getContext()).load(profilPhotoURL).into(profilPicture);
 
         tripItem.bindLayout(view);

@@ -7,13 +7,13 @@ public class User implements Serializable{
     private final String name;
     private final String id;
     private final String coverPhoto;
-    private final String profilPhoto;
+    private final String profilePhoto;
 
-    public User(String name, String id, String coverPhoto, String profilPhoto) {
+    public User(String name, String id, String coverPhoto, String profilePhoto) {
         this.name = name;
         this.id = id;
         this.coverPhoto = coverPhoto;
-        this.profilPhoto = profilPhoto;
+        this.profilePhoto = profilePhoto;
     }
 
     public String getName() {
@@ -28,7 +28,7 @@ public class User implements Serializable{
         return coverPhoto;
     }
 
-    public String getProfilPhoto() {
-        return profilPhoto;
+    public String getProfilePhoto() {
+        return profilePhoto;
     }
 }
